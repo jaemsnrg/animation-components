@@ -3,7 +3,7 @@
 import React, { useRef, useState } from 'react';
 import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { cn } from '../../lib/utils';
+import { cn } from '../lib/utils';
 
 export const Magnetic = ({ children, className, distance = 0.5 }) => {
   const ref = useRef(null);

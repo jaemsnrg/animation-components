@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { cn } from '../../lib/utils';
+import { cn } from '../lib/utils';
 
 const Letter = ({ char, mouseX, mouseY, proximity = 150 }) => {
   const ref = useRef(null);

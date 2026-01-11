@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useSpring, useMotionValue, animate } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { cn } from '../../lib/utils';
+import { cn } from '../lib/utils';
 
 const WaveLetter = ({ char, progress, index, total, proximity = 0.15 }) => {
   const weight = useMotionValue(200);
