@@ -29,36 +29,34 @@ function ScrollResetInner() {
 
       const id = targetHash.replace('#', '');
       let attempts = 0;
-      let lastTop = -1;
       
       const tryScroll = () => {
         const element = document.getElementById(id);
         
         if (element) {
           const rect = element.getBoundingClientRect();
-          const currentTop = rect.top + window.scrollY;
+          const targetTop = rect.top + window.scrollY;
           
-          if (Math.abs(currentTop - lastTop) > 2) {
-            lenis.scrollTo(currentTop, { 
-              offset: -100,
-              immediate: !isSmooth || attempts > 0, 
-              force: true 
-            });
-            lastTop = currentTop;
-          }
-
-          if (attempts < 20) {
+          lenis.scrollTo(targetTop, { 
+            offset: -100,
+            immediate: !isSmooth, 
+            force: true 
+          });
+          
+          // One more check after a short delay to account for layout shifts
+          if (attempts < 3) {
             attempts++;
-            setTimeout(() => requestAnimationFrame(tryScroll), 100);
+            setTimeout(() => requestAnimationFrame(tryScroll), 150);
           }
-        } else if (attempts < 50) {
+        } else if (attempts < 10) {
           attempts++;
-          setTimeout(() => requestAnimationFrame(tryScroll), 100);
+          setTimeout(() => requestAnimationFrame(tryScroll), 50);
         }
       };
 
       requestAnimationFrame(tryScroll);
     };
+
 
     // Initial check on route change (Snap)
     performScroll(window.location.hash, false);
