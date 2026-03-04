@@ -32,6 +32,7 @@ export const SmoothScroll = ({ children, options = {} }) => {
       duration: 1.5,
       smoothWheel: true,
       syncTouch: true,
+      touchMultiplier: 1.75,
       ...options
     }}>
       <LenisLinkStopper />
