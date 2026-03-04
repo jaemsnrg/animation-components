@@ -25,7 +25,13 @@ function LenisLinkStopper() {
   return null;
 }
 
+const isMobile = () => typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+
 export const SmoothScroll = ({ children, options = {} }) => {
+  if (isMobile()) {
+    return <>{children}</>;
+  }
+
   return (
     <ReactLenis root options={{
       lerp: 0.1,
