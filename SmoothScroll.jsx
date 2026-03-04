@@ -11,15 +11,13 @@ function ScrollResetInner() {
   const searchParams = useSearchParams();
   const lenis = useLenis();
 
-  // Force manual scroll restoration to prevent browser/Next.js interference
   useEffect(() => {
     if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
   }, []);
 
-  // Hide the page before paint when navigating to a hash route.
-  // This prevents any flash of the wrong scroll position during positioning.
+  // Hide before paint on hash routes so the user never sees the wrong position.
   useLayoutEffect(() => {
     if (window.location.hash && window.location.hash.length > 1) {
       document.documentElement.style.visibility = 'hidden';
@@ -34,17 +32,15 @@ function ScrollResetInner() {
       document.documentElement.style.visibility = '';
     };
 
-    // Safety: ensure the page is always revealed even if lenis fails to initialise
     const safetyTimeout = setTimeout(reveal, 1000);
 
     if (!lenis) return () => clearTimeout(safetyTimeout);
 
-    // Cancellation flag to prevent stale retries firing after navigation
     let cancelled = false;
 
     const performScroll = (targetHash, isSmooth = false) => {
       if (!targetHash || targetHash.length <= 1) {
-        lenis.scrollTo(0, { immediate: !isSmooth, force: true });
+        lenis.scrollTo(0, { immediate: true, force: true });
         reveal();
         return;
       }
@@ -58,16 +54,12 @@ function ScrollResetInner() {
 
         if (element) {
           const rect = element.getBoundingClientRect();
-          const targetTop = rect.top + window.scrollY;
-
-          lenis.scrollTo(targetTop, {
+          lenis.scrollTo(rect.top + window.scrollY, {
             offset: -100,
             immediate: !isSmooth,
             force: true
           });
 
-          // Retry to account for layout shifts. The page stays hidden during retries
-          // so the user never sees the intermediate positions — only the final one.
           if (attempts < 3) {
             attempts++;
             setTimeout(() => requestAnimationFrame(tryScroll), 150);
@@ -85,10 +77,8 @@ function ScrollResetInner() {
       requestAnimationFrame(tryScroll);
     };
 
-    // Initial check on route change (Snap)
     performScroll(window.location.hash, false);
 
-    // Listen for manual hash changes (Smooth)
     const handleHashChange = () => performScroll(window.location.hash, true);
     window.addEventListener('hashchange', handleHashChange);
 
@@ -96,8 +86,6 @@ function ScrollResetInner() {
       cancelled = true;
       clearTimeout(safetyTimeout);
       window.removeEventListener('hashchange', handleHashChange);
-      // Don't call reveal() here — useLayoutEffect cleanup handles visibility restoration,
-      // and calling it here would undo the hiding before positioning completes.
     };
   }, [pathname, searchParams, lenis]);
 
