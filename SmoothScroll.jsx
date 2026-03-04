@@ -1,103 +1,28 @@
 'use client';
 
 import { ReactLenis, useLenis } from 'lenis/react';
-import { Suspense, useEffect, useLayoutEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation'
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import './lenis.css';
 
-function ScrollResetInner() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
+function LenisLinkStopper() {
   const lenis = useLenis();
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
-      window.history.scrollRestoration = 'manual';
-    }
-  }, []);
+    if (!lenis) return;
 
-  // Hide before paint on hash routes so the user never sees the wrong position.
-  useLayoutEffect(() => {
-    if (window.location.hash && window.location.hash.length > 1) {
-      document.documentElement.style.visibility = 'hidden';
-    }
-    return () => {
-      document.documentElement.style.visibility = '';
-    };
-  }, [pathname]);
-
-  useEffect(() => {
-    const reveal = () => {
-      document.documentElement.style.visibility = '';
-    };
-
-    const safetyTimeout = setTimeout(reveal, 1000);
-
-    if (!lenis) return () => clearTimeout(safetyTimeout);
-
-    let cancelled = false;
-
-    const performScroll = (targetHash, isSmooth = false) => {
-      if (!targetHash || targetHash.length <= 1) {
-        lenis.scrollTo(0, { immediate: true, force: true });
-        reveal();
-        return;
+    const handleMouseDown = (e) => {
+      const link = e.target.closest('a');
+      if (link) {
+        lenis.scrollTo(lenis.scroll, { immediate: true });
       }
-
-      const id = targetHash.replace('#', '');
-      let attempts = 0;
-
-      const tryScroll = () => {
-        if (cancelled) return;
-        const element = document.getElementById(id);
-
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          lenis.scrollTo(rect.top + window.scrollY, {
-            offset: -100,
-            immediate: !isSmooth,
-            force: true
-          });
-
-          if (attempts < 3) {
-            attempts++;
-            setTimeout(() => requestAnimationFrame(tryScroll), 150);
-          } else {
-            reveal();
-          }
-        } else if (attempts < 10) {
-          attempts++;
-          setTimeout(() => requestAnimationFrame(tryScroll), 50);
-        } else {
-          reveal();
-        }
-      };
-
-      requestAnimationFrame(tryScroll);
     };
 
-    performScroll(window.location.hash, false);
-
-    const handleHashChange = () => performScroll(window.location.hash, true);
-    window.addEventListener('hashchange', handleHashChange);
-
-    return () => {
-      cancelled = true;
-      clearTimeout(safetyTimeout);
-      window.removeEventListener('hashchange', handleHashChange);
-    };
-  }, [pathname, searchParams, lenis]);
+    document.addEventListener('mousedown', handleMouseDown, true);
+    return () => document.removeEventListener('mousedown', handleMouseDown, true);
+  }, [lenis]);
 
   return null;
-}
-
-function ScrollReset() {
-  return (
-    <Suspense fallback={null}>
-      <ScrollResetInner />
-    </Suspense>
-  );
 }
 
 export const SmoothScroll = ({ children, options = {} }) => {
@@ -109,7 +34,7 @@ export const SmoothScroll = ({ children, options = {} }) => {
       syncTouch: true,
       ...options
     }}>
-      <ScrollReset />
+      <LenisLinkStopper />
       {children}
     </ReactLenis>
   );
