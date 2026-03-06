@@ -81,8 +81,10 @@ export default function ScrambleText({
     <span
       className={className}
       onMouseEnter={() => triggerOnHover && setLocalTrigger(prev => prev + 1)}
+      style={{ position: 'relative', display: 'inline-block' }}
     >
-      {displayText.join('')}
+      <span style={{ visibility: 'hidden' }}>{text}</span>
+      <span style={{ position: 'absolute', inset: 0 }}>{displayText.join('')}</span>
     </span>
   );
 }
