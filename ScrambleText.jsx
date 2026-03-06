@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
 export default function ScrambleText({
@@ -12,14 +11,14 @@ export default function ScrambleText({
   trigger = 0,
   triggerOnHover = false
 }) {
-  const [displayText, setDisplayText] = useState(text.split(''));
+  const words = text.split(' ');
+  const [displayWords, setDisplayWords] = useState(words.map(w => w.split('')));
   const [localTrigger, setLocalTrigger] = useState(0);
 
   useEffect(() => {
-    const letters = text.split('');
-    const resolved = new Set();
+    const wordArrays = words.map(w => w.split(''));
+    const resolved = wordArrays.map(() => new Set());
 
-    // Function to shuffle an array
     const shuffle = (array) => {
       const arr = [...array];
       for (let i = arr.length - 1; i > 0; i--) {
@@ -29,50 +28,45 @@ export default function ScrambleText({
       return arr;
     };
 
-    // Main scramble interval
     const interval = setInterval(() => {
-      setDisplayText(prev => {
-        const next = [...prev];
-
-        // Find indices that are not yet resolved
-        const indicesToScramble = [];
-        for (let i = 0; i < letters.length; i++) {
-          if (!resolved.has(i)) indicesToScramble.push(i);
-        }
-
-        if (indicesToScramble.length === 0) {
-          clearInterval(interval);
+      setDisplayWords(prev =>
+        prev.map((wordChars, wi) => {
+          const letters = wordArrays[wi];
+          const unresolved = letters.reduce((acc, _, i) => {
+            if (!resolved[wi].has(i)) acc.push(i);
+            return acc;
+          }, []);
+          if (unresolved.length === 0) return wordChars;
+          const shuffled = shuffle(unresolved.map(i => letters[i]));
+          const next = [...wordChars];
+          unresolved.forEach((idx, i) => { next[idx] = shuffled[i]; });
           return next;
-        }
+        })
+      );
+    }, 90);
 
-        // Get the pool of characters belonging to these unresolved indices
-        const charPool = indicesToScramble.map(idx => letters[idx]);
-        // Shuffle the pool
-        const shuffledPool = shuffle(charPool);
-
-        // Assign shuffled characters back to the next display string
-        indicesToScramble.forEach((targetIdx, poolIdx) => {
-          next[targetIdx] = shuffledPool[poolIdx];
-        });
-
-        return next;
+    const timeouts = [];
+    let offset = 0;
+    wordArrays.forEach((letters, wi) => {
+      letters.forEach((_, li) => {
+        timeouts.push(setTimeout(() => {
+          resolved[wi].add(li);
+          setDisplayWords(prev => {
+            const next = prev.map(w => [...w]);
+            next[wi][li] = wordArrays[wi][li];
+            return next;
+          });
+        }, duration + offset * delayPerLetter));
+        offset++;
       });
-    }, 40);
-
-    // Individual timers to resolve each letter
-    const timeouts = letters.map((_, index) => {
-      return setTimeout(() => {
-        resolved.add(index);
-        setDisplayText(prev => {
-          const next = [...prev];
-          next[index] = letters[index];
-          return next;
-        });
-      }, duration + (index * delayPerLetter));
     });
+
+    const totalLetters = wordArrays.reduce((sum, w) => sum + w.length, 0);
+    const done = setTimeout(() => clearInterval(interval), duration + totalLetters * delayPerLetter + 100);
 
     return () => {
       clearInterval(interval);
+      clearTimeout(done);
       timeouts.forEach(clearTimeout);
     };
   }, [text, duration, delayPerLetter, trigger, localTrigger]);
@@ -83,8 +77,16 @@ export default function ScrambleText({
       onMouseEnter={() => triggerOnHover && setLocalTrigger(prev => prev + 1)}
       style={{ position: 'relative', display: 'inline-block' }}
     >
-      <span style={{ visibility: 'hidden' }}>{text}</span>
-      <span style={{ position: 'absolute', inset: 0 }}>{displayText.join('')}</span>
+      <span style={{ visibility: 'hidden' }}>
+        {words.map((word, i) => (
+          <span key={i}>{word}{i < words.length - 1 ? ' ' : ''}</span>
+        ))}
+      </span>
+      <span style={{ position: 'absolute', inset: 0 }}>
+        {displayWords.map((wordChars, i) => (
+          <span key={i}>{wordChars.join('')}{i < displayWords.length - 1 ? ' ' : ''}</span>
+        ))}
+      </span>
     </span>
   );
 }
