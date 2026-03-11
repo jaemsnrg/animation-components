@@ -27,8 +27,12 @@ function LenisLinkStopper() {
 
 const isMobile = () => typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
 
+const isSafari = () =>
+  typeof navigator !== 'undefined' &&
+  /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
 export const SmoothScroll = ({ children, options = {} }) => {
-  if (isMobile()) {
+  if (isMobile() || isSafari()) {
     return <>{children}</>;
   }
 
