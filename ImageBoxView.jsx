@@ -4,8 +4,8 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import PropTypes from 'prop-types';
 
-// Expo-out easing for a dynamic, smooth reveal feel
-const EASE = [0.16, 1, 0.3, 1];
+// Smooth cinematic ease — slow start, long gentle deceleration
+const EASE = [0.76, 0, 0.24, 1];
 
 // Extra image height factor to allow parallax movement without blank edges
 const PARALLAX_OVERFLOW = 1.3;
@@ -36,7 +36,7 @@ export const ImageBoxView = ({
     <div ref={containerRef} style={{ width }}>
       <motion.div
         ref={boxRef}
-        animate={{ height: inView ? height : resolvedInitialHeight }}
+        animate={{ height: inView ? height : resolvedInitialHeight, y: inView ? 0 : height * 0.15 }}
         transition={{ duration: 3, ease: EASE, delay: 0.3 }}
         style={{
           width,
