@@ -15,11 +15,12 @@ export const ImageBoxView = ({
   alt,
   width = 400,
   height = 720,
-  initialHeight = 10,
+  initialHeight,
   initialScale = 1.3,
-  borderRadius = 20,
+  borderRadius = 0,
   parallaxAmount = 80,
 }) => {
+  const resolvedInitialHeight = initialHeight ?? height * 0.5;
   const containerRef = useRef(null);
   const boxRef = useRef(null);
   const inView = useInView(boxRef, { once: true, amount: 0.3 });
@@ -35,8 +36,8 @@ export const ImageBoxView = ({
     <div ref={containerRef} style={{ width }}>
       <motion.div
         ref={boxRef}
-        animate={{ height: inView ? height : initialHeight }}
-        transition={{ duration: 1.6, ease: EASE, delay: 0.3 }}
+        animate={{ height: inView ? height : resolvedInitialHeight }}
+        transition={{ duration: 3, ease: EASE, delay: 0.3 }}
         style={{
           width,
           overflow: 'hidden',
@@ -47,7 +48,7 @@ export const ImageBoxView = ({
           src={src}
           alt={alt}
           animate={{ scale: inView ? 1 : initialScale }}
-          transition={{ duration: 1.6, ease: EASE, delay: 0.3 }}
+          transition={{ duration: 3.5, ease: EASE, delay: 0.3 }}
           style={{
             width: '100%',
             height: height * PARALLAX_OVERFLOW,
