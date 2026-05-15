@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import PropTypes from 'prop-types';
 
 // Expo-out easing for a dynamic, smooth reveal feel
@@ -14,12 +14,15 @@ export const ImageBoxView = ({
   src,
   alt,
   width = 400,
-  height = 640,
+  height = 720,
+  initialHeight = 10,
   initialScale = 1.3,
   borderRadius = 20,
   parallaxAmount = 80,
 }) => {
   const containerRef = useRef(null);
+  const boxRef = useRef(null);
+  const inView = useInView(boxRef, { once: true, amount: 0.3 });
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -31,10 +34,9 @@ export const ImageBoxView = ({
   return (
     <div ref={containerRef} style={{ width }}>
       <motion.div
-        initial={{ height: 0 }}
-        whileInView={{ height }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.6, ease: EASE }}
+        ref={boxRef}
+        animate={{ height: inView ? height : initialHeight }}
+        transition={{ duration: 1.6, ease: EASE, delay: 0.3 }}
         style={{
           width,
           overflow: 'hidden',
@@ -44,10 +46,8 @@ export const ImageBoxView = ({
         <motion.img
           src={src}
           alt={alt}
-          initial={{ scale: initialScale }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1.6, ease: EASE }}
+          animate={{ scale: inView ? 1 : initialScale }}
+          transition={{ duration: 1.6, ease: EASE, delay: 0.3 }}
           style={{
             width: '100%',
             height: height * PARALLAX_OVERFLOW,
@@ -68,6 +68,7 @@ ImageBoxView.propTypes = {
   alt: PropTypes.string.isRequired,
   width: PropTypes.number,
   height: PropTypes.number,
+  initialHeight: PropTypes.number,
   initialScale: PropTypes.number,
   borderRadius: PropTypes.number,
   parallaxAmount: PropTypes.number,
