@@ -4,8 +4,13 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import PropTypes from 'prop-types';
 
+// https://easingwizard.com/
 // Smooth cinematic ease — slow start, long gentle deceleration
-const EASE = [0.76, 0, 0.24, 1];
+const EASE = [0.448, 0.067, 0.119, 0.994];
+// anticipate [0.8, -0.4, 0.5, 1]; 6
+// quant [0.44, 0, 0.56, 1]; 7
+// custom (like a quant) [0.448, 0.067, 0.119, 0.994]; 9
+
 
 // Extra image height factor to allow parallax movement without blank edges
 const PARALLAX_OVERFLOW = 1.3;
@@ -37,7 +42,7 @@ export const ImageBoxView = ({
       <motion.div
         ref={boxRef}
         animate={{ height: inView ? height : resolvedInitialHeight, y: inView ? 0 : height * 0.15 }}
-        transition={{ duration: 3, ease: EASE, delay: 0.3 }}
+        transition={{ duration: 2, ease: EASE, delay: 0.3 }}
         style={{
           width,
           overflow: 'hidden',
@@ -48,7 +53,7 @@ export const ImageBoxView = ({
           src={src}
           alt={alt}
           animate={{ scale: inView ? 1 : initialScale }}
-          transition={{ duration: 3.5, ease: EASE, delay: 0.3 }}
+          transition={{ duration: 2.5, ease: EASE, delay: 0.3 }}
           style={{
             width: '100%',
             height: height * PARALLAX_OVERFLOW,
