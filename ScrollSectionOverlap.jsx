@@ -18,7 +18,7 @@ export const ScrollSectionOverlap = ({ first, second }) => {
   return (
     <div style={{ position: 'relative' }}>
       {/* 200vh wrapper: 100vh to view section 1, 100vh of scroll room for the slide-up */}
-      <div ref={transitionRef} style={{ height: '200vh' }}>
+      <div ref={transitionRef} style={{ height: '165vh' }}>
         <div style={{ position: 'sticky', top: 0, height: '100vh', zIndex: 1 }}>
           {first}
         </div>
