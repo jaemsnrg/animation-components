@@ -24,6 +24,8 @@ export const ImageBoxView = ({
   initialScale = 1.3,
   borderRadius = 0,
   parallaxAmount = 80,
+  // When true: uses clipPath reveal so image shows at natural size — no cropping
+  naturalSize = false,
 }) => {
   const resolvedInitialHeight = initialHeight ?? height * 0.5;
   const containerRef = useRef(null);
@@ -37,6 +39,41 @@ export const ImageBoxView = ({
 
   const imageY = useTransform(scrollYProgress, [0, 1], [-parallaxAmount / 2, parallaxAmount / 2]);
 
+  // ── Natural-size mode: clipPath reveal, image at full natural height ───────
+  if (naturalSize) {
+    const r = `${borderRadius}px`;
+    return (
+      <div ref={containerRef} style={{ width }}>
+        <motion.div
+          ref={boxRef}
+          animate={{
+            clipPath: inView
+              ? `inset(0% 0% 0% 0% round ${r})`
+              : `inset(50% 0% 0% 0% round ${r})`,
+            y: inView ? 0 : 24,
+          }}
+          transition={{ duration: 2, ease: EASE, delay: 0.3 }}
+          style={{ width }}
+        >
+          <motion.img
+            src={src}
+            alt={alt}
+            animate={{ scale: inView ? 1 : initialScale }}
+            transition={{ duration: 2.5, ease: EASE, delay: 0.3 }}
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              transformOrigin: 'center center',
+              borderRadius,
+            }}
+          />
+        </motion.div>
+      </div>
+    );
+  }
+
+  // ── Fixed-height mode (original behaviour) ────────────────────────────────
   return (
     <div ref={containerRef} style={{ width }}>
       <motion.div
@@ -72,10 +109,11 @@ export const ImageBoxView = ({
 ImageBoxView.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
-  width: PropTypes.number,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.number,
   initialHeight: PropTypes.number,
   initialScale: PropTypes.number,
   borderRadius: PropTypes.number,
   parallaxAmount: PropTypes.number,
+  naturalSize: PropTypes.bool,
 };
