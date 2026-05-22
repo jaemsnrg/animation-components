@@ -24,7 +24,7 @@ function toSegments(children) {
 export const HoverReveal = ({
   children,
   duration = 0.55,
-  stagger = 0.0175,
+  stagger = 0.009,
   style = {},
   className = '',
   animate: externalAnimate,
