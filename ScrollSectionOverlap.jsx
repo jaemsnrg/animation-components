@@ -9,16 +9,19 @@ export const ScrollSectionOverlap = ({ first, second }) => {
 
   const { scrollYProgress } = useScroll({
     target: transitionRef,
-    offset: ['start start', 'end end'],
+    // Start: when the top of this section reaches the bottom of the viewport
+    // (i.e. the moment the preceding section's bottom aligns with the screen bottom)
+    // End: when the bottom of this section reaches the bottom of the viewport
+    offset: ['start end', 'end end'],
   });
 
-  // Section 2 slides from fully below the viewport to its final position
-  const y = useTransform(scrollYProgress, [0, 1], ['100vh', '0vh']);
+  // Section 2 holds position until 0.3 progress, then slides up into place
+  const y = useTransform(scrollYProgress, [0.3, 1], ['100vh', '0vh']);
 
   return (
     <div style={{ position: 'relative' }}>
-      {/* 200vh wrapper: 100vh to view section 1, 100vh of scroll room for the slide-up */}
-      <div ref={transitionRef} style={{ height: '165vh' }}>
+      {/* 100vh wrapper — transition spans exactly one viewport height of scroll */}
+      <div ref={transitionRef} style={{ height: '100vh' }}>
         <div style={{ position: 'sticky', top: 0, height: '100vh', zIndex: 1 }}>
           {first}
         </div>
