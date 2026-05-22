@@ -27,14 +27,15 @@ export const HoverReveal = ({
   duration = 0.55,
   style = {},
   className = '',
+  animate: externalAnimate,
 }) => {
   const t = { ...transition, duration };
 
   return (
     <motion.div
       initial="rest"
-      whileHover="hover"
-      animate="rest"
+      animate={externalAnimate ?? 'rest'}
+      {...(!externalAnimate && { whileHover: 'hover' })}
       style={{
         display: 'inline-flex',
         position: 'relative',
@@ -96,4 +97,5 @@ HoverReveal.propTypes = {
   duration: PropTypes.number,
   style: PropTypes.object,
   className: PropTypes.string,
+  animate: PropTypes.string,
 };
