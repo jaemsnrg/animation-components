@@ -45,7 +45,6 @@ export const HoverReveal = ({
     ));
 
   return (
-
     <motion.div
       initial="rest"
       animate={externalAnimate ?? 'rest'}
@@ -101,7 +100,7 @@ export const HoverReveal = ({
       >
         {renderSegments('115%', '0%')}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
