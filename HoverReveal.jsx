@@ -1,40 +1,52 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 
 // Shared with ImageBoxView — smooth cinematic ease
 const EASE = [0.448, 0.067, 0.119, 0.994];
 
-const outgoing = {
-  rest: { y: '0%' },
-  hover: { y: '-105%' },
-};
-
-const incoming = {
-  rest: { y: '105%' },
-  hover: { y: '0%' },
-};
-
-const transition = {
-  duration: 0.55,
-  ease: EASE,
-};
+// Split children into per-character segments so each can be staggered.
+// Non-string children (icons, elements) animate as a single unit.
+function toSegments(children) {
+  const segments = [];
+  React.Children.forEach(children, (child) => {
+    if (typeof child === 'string') {
+      [...child].forEach((char) => segments.push(char));
+    } else {
+      segments.push(child);
+    }
+  });
+  return segments;
+}
 
 export const HoverReveal = ({
   children,
   duration = 0.55,
+  stagger = 0.0175,
   style = {},
   className = '',
 }) => {
-  const t = { ...transition, duration };
+  const [hovered, setHovered] = useState(false);
+  const segments = toSegments(children);
+
+  const renderSegments = (restY, hoverY) =>
+    segments.map((seg, i) => (
+      <motion.span
+        key={i}
+        style={{ display: 'inline-block', whiteSpace: 'pre' }}
+        animate={{ y: hovered ? hoverY : restY }}
+        transition={{ duration, ease: EASE, delay: i * stagger }}
+      >
+        {seg}
+      </motion.span>
+    ));
 
   return (
-    <motion.div
-      initial="rest"
-      whileHover="hover"
-      animate="rest"
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
         display: 'inline-flex',
         position: 'relative',
@@ -44,8 +56,8 @@ export const HoverReveal = ({
       }}
       className={className}
     >
-      {/* ghost spacer — invisible, sizes the container so both animated
-          divs get identical dimensions via inset:0 */}
+      {/* ghost spacer — sizes the container; paddingBlock absorbs glyph
+          ink that bleeds outside the line-height box (ascenders/descenders) */}
       <div
         aria-hidden
         style={{
@@ -53,15 +65,14 @@ export const HoverReveal = ({
           alignItems: 'center',
           visibility: 'hidden',
           pointerEvents: 'none',
+          paddingBlock: '0.1em',
         }}
       >
         {children}
       </div>
 
       {/* outgoing — visible at rest, exits upward on hover */}
-      <motion.div
-        variants={outgoing}
-        transition={t}
+      <div
         style={{
           position: 'absolute',
           inset: 0,
@@ -70,13 +81,11 @@ export const HoverReveal = ({
           justifyContent: 'center',
         }}
       >
-        {children}
-      </motion.div>
+        {renderSegments('0%', '-115%')}
+      </div>
 
       {/* incoming — hidden below at rest, rises into view on hover */}
-      <motion.div
-        variants={incoming}
-        transition={t}
+      <div
         style={{
           position: 'absolute',
           inset: 0,
@@ -85,15 +94,16 @@ export const HoverReveal = ({
           justifyContent: 'center',
         }}
       >
-        {children}
-      </motion.div>
-    </motion.div>
+        {renderSegments('115%', '0%')}
+      </div>
+    </div>
   );
 };
 
 HoverReveal.propTypes = {
   children: PropTypes.node.isRequired,
   duration: PropTypes.number,
+  stagger: PropTypes.number,
   style: PropTypes.object,
   className: PropTypes.string,
 };
