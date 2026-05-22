@@ -23,7 +23,6 @@ export const ScrollSectionOverlap = ({ first, second }) => {
   const rawY = useTransform(scrollYProgress, [0.5, 1], [100, 0]);
   const springY = useSpring(rawY, { stiffness: 40, damping: 18, mass: 0.8 });
   const y = useTransform(springY, v => `${v}vh`);
-
   return (
     <div style={{ position: 'relative' }}>
       <div
