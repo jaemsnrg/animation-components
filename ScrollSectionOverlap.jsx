@@ -16,7 +16,7 @@ export const ScrollSectionOverlap = ({ first, second }) => {
   });
 
   // Section 2 holds until 0.65 progress, then eases in via spring (no extra scroll space needed)
-  const rawY = useTransform(scrollYProgress, [0.65, 1], [100, 0]);
+  const rawY = useTransform(scrollYProgress, [0.5, 1], [100, 0]);
   const springY = useSpring(rawY, { stiffness: 40, damping: 18, mass: 0.8 });
   const y = useTransform(springY, v => `${v}vh`);
 
