@@ -27,6 +27,7 @@ export const HoverReveal = ({
   stagger = 0.0175,
   style = {},
   className = '',
+  animate: externalAnimate,
 }) => {
   const [hovered, setHovered] = useState(false);
   const segments = toSegments(children);
@@ -44,9 +45,13 @@ export const HoverReveal = ({
     ));
 
   return (
-    <div
+
+    <motion.div
+      initial="rest"
+      animate={externalAnimate ?? 'rest'}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      {...(!externalAnimate && { whileHover: 'hover' })}
       style={{
         display: 'inline-flex',
         position: 'relative',
@@ -106,4 +111,5 @@ HoverReveal.propTypes = {
   stagger: PropTypes.number,
   style: PropTypes.object,
   className: PropTypes.string,
+  animate: PropTypes.string,
 };
