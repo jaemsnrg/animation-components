@@ -39,7 +39,7 @@ export const HoverReveal = ({
         // paddingBlock matches the ghost wrapper's paddingBlock so span height
         // equals container height — keeps y percentages in sync with the clip.
         // initial prevents Framer Motion from animating from y:0 on mount.
-        style={{ display: 'inline-block', whiteSpace: 'pre', paddingBlock: '0.1em' }}
+        style={{ display: 'inline-block', whiteSpace: 'pre', paddingBlock: '0.15em' }}
         initial={{ y: restY }}
         animate={{ y: hovered ? hoverY : restY }}
         transition={{ duration, ease: EASE, delay: i * stagger }}
@@ -73,7 +73,7 @@ export const HoverReveal = ({
           alignItems: 'center',
           visibility: 'hidden',
           pointerEvents: 'none',
-          paddingBlock: '0.1em',
+          paddingBlock: '0.15em',
         }}
       >
         {children}
