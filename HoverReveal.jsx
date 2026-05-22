@@ -36,7 +36,11 @@ export const HoverReveal = ({
     segments.map((seg, i) => (
       <motion.span
         key={i}
-        style={{ display: 'inline-block', whiteSpace: 'pre' }}
+        // paddingBlock matches the ghost wrapper's paddingBlock so span height
+        // equals container height — keeps y percentages in sync with the clip.
+        // initial prevents Framer Motion from animating from y:0 on mount.
+        style={{ display: 'inline-block', whiteSpace: 'pre', paddingBlock: '0.1em' }}
+        initial={{ y: restY }}
         animate={{ y: hovered ? hoverY : restY }}
         transition={{ duration, ease: EASE, delay: i * stagger }}
       >
@@ -85,7 +89,7 @@ export const HoverReveal = ({
           justifyContent: 'center',
         }}
       >
-        {renderSegments('0%', '-115%')}
+        {renderSegments('0%', '-105%')}
       </div>
 
       {/* incoming — hidden below at rest, rises into view on hover */}
@@ -98,7 +102,7 @@ export const HoverReveal = ({
           justifyContent: 'center',
         }}
       >
-        {renderSegments('115%', '0%')}
+        {renderSegments('105%', '0%')}
       </div>
     </motion.div>
   );
