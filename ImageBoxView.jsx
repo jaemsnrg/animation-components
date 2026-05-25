@@ -73,7 +73,7 @@ export const ImageBoxView = ({
               aria-hidden
               initial={{ opacity: 1 }}
               animate={{ opacity: isLoaded ? 0 : 1 }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
+              transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
               style={{
                 gridArea: '1/1',
                 width: '100%',
@@ -91,7 +91,7 @@ export const ImageBoxView = ({
             alt={alt}
             initial={{ opacity: 0 }}
             animate={{ opacity: isLoaded ? 1 : 0 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
             onLoad={() => setIsLoaded(true)}
             style={{
               gridArea: '1/1',
@@ -127,7 +127,7 @@ export const ImageBoxView = ({
             aria-hidden
             initial={{ opacity: 1 }}
             animate={{ opacity: isLoaded ? 0 : 1 }}
-            transition={{ duration: 0.7, ease: 'easeOut' }}
+            transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
             style={{
               gridArea: '1/1',
               width: '100%',
@@ -144,7 +144,7 @@ export const ImageBoxView = ({
           alt={alt}
           initial={{ opacity: 0 }}
           animate={{ scale: inView ? 1 : initialScale, opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: duration * 1.25, ease: EASE, delay, opacity: { duration: 0.7, ease: 'easeOut', delay: 0 } }}
+          transition={{ duration: duration * 1.25, ease: EASE, delay, opacity: { duration: 1.6, ease: [0.25, 0.1, 0.25, 1], delay: 0 } }}
           onLoad={() => setIsLoaded(true)}
           style={{
             gridArea: '1/1',
