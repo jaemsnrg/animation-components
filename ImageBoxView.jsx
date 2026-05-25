@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useTransform, useInView } from 'framer-motion';
 import { useLenis } from 'lenis/react';
 import PropTypes from 'prop-types';
@@ -46,6 +46,11 @@ export const ImageBoxView = ({
   const inViewRaw = useInView(boxRef, { once: true, amount: 0 });
   const inView = disableReveal || inViewRaw;
   const [isLoaded, setIsLoaded] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) setIsLoaded(true);
+  }, []);
 
   const scrollProgress = useLenisScrollProgress(containerRef);
   const imageY = useTransform(scrollProgress, [0, 1], [-parallaxAmount, parallaxAmount]);
@@ -87,6 +92,7 @@ export const ImageBoxView = ({
           )}
           {/* Real image */}
           <motion.img
+            ref={imgRef}
             src={src}
             alt={alt}
             initial={{ opacity: 0 }}
@@ -140,6 +146,7 @@ export const ImageBoxView = ({
           />
         )}
         <motion.img
+          ref={imgRef}
           src={src}
           alt={alt}
           initial={{ opacity: 0 }}
