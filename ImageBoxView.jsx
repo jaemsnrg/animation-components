@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useMotionValue, useTransform, useInView } from 'framer-motion';
 import { useLenis } from 'lenis/react';
 import PropTypes from 'prop-types';
@@ -14,13 +14,24 @@ const PARALLAX_OVERFLOW = 1.3;
 
 function useLenisScrollProgress(ref) {
   const progress = useMotionValue(0);
-  useLenis(() => {
+
+  const update = useCallback(() => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
     const vh = window.innerHeight;
     const p = 1 - rect.bottom / (vh + rect.height);
     progress.set(Math.max(0, Math.min(1, p)));
-  });
+  }, [ref, progress]);
+
+  // Lenis-driven (desktop)
+  useLenis(update);
+
+  // Native scroll fallback (mobile/Safari where Lenis is disabled)
+  useEffect(() => {
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, [update]);
+
   return progress;
 }
 
