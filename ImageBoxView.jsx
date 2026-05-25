@@ -50,25 +50,6 @@ export const ImageBoxView = ({
   const scrollProgress = useLenisScrollProgress(containerRef);
   const imageY = useTransform(scrollProgress, [0, 1], [-parallaxAmount, parallaxAmount]);
 
-  const blurOverlay = blurSrc ? (
-    <motion.img
-      src={blurSrc}
-      aria-hidden
-      animate={{ opacity: isLoaded ? 0 : 1 }}
-      transition={{ duration: 0.7, ease: 'easeOut' }}
-      style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-        filter: 'blur(24px)',
-        transform: 'scale(1.12)',
-        pointerEvents: 'none',
-      }}
-    />
-  ) : null;
-
   // ── Natural-size mode: clipPath reveal + parallax ─────────────────────────
   if (naturalSize) {
     const r = `${borderRadius}px`;
@@ -83,16 +64,37 @@ export const ImageBoxView = ({
             y: inView ? 0 : 28,
           }}
           transition={{ duration, ease: EASE, delay }}
-          style={{ width, position: 'relative', overflow: 'hidden', borderRadius: r }}
+          style={{ width, display: 'grid', overflow: 'hidden' }}
         >
-          {blurOverlay}
+          {/* Blur placeholder — in normal flow so it holds the container height */}
+          {blurSrc && (
+            <motion.img
+              src={blurSrc}
+              aria-hidden
+              initial={{ opacity: 1 }}
+              animate={{ opacity: isLoaded ? 0 : 1 }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+              style={{
+                gridArea: '1/1',
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+                filter: 'blur(40px)',
+                transform: 'scale(1.15)',
+                imageRendering: 'pixelated',
+              }}
+            />
+          )}
+          {/* Real image */}
           <motion.img
             src={src}
             alt={alt}
+            initial={{ opacity: 0 }}
             animate={{ opacity: isLoaded ? 1 : 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
             onLoad={() => setIsLoaded(true)}
             style={{
+              gridArea: '1/1',
               width: '100%',
               height: 'auto',
               display: 'block',
@@ -116,17 +118,36 @@ export const ImageBoxView = ({
           width,
           overflow: 'hidden',
           borderRadius,
-          position: 'relative',
+          display: 'grid',
         }}
       >
-        {blurOverlay}
+        {blurSrc && (
+          <motion.img
+            src={blurSrc}
+            aria-hidden
+            initial={{ opacity: 1 }}
+            animate={{ opacity: isLoaded ? 0 : 1 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            style={{
+              gridArea: '1/1',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              filter: 'blur(40px)',
+              transform: 'scale(1.15)',
+              imageRendering: 'pixelated',
+            }}
+          />
+        )}
         <motion.img
           src={src}
           alt={alt}
+          initial={{ opacity: 0 }}
           animate={{ scale: inView ? 1 : initialScale, opacity: isLoaded ? 1 : 0 }}
           transition={{ duration: duration * 1.25, ease: EASE, delay, opacity: { duration: 0.7, ease: 'easeOut', delay: 0 } }}
           onLoad={() => setIsLoaded(true)}
           style={{
+            gridArea: '1/1',
             width: '100%',
             height: height * PARALLAX_OVERFLOW,
             objectFit: 'cover',
