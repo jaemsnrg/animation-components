@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useMotionValue, useTransform, useInView } from 'framer-motion';
 import { useLenis } from 'lenis/react';
 import PropTypes from 'prop-types';
@@ -27,6 +27,7 @@ function useLenisScrollProgress(ref) {
 export const ImageBoxView = ({
   src,
   alt,
+  blurSrc,
   width = 400,
   height = 720,
   initialHeight,
@@ -44,9 +45,29 @@ export const ImageBoxView = ({
   const boxRef = useRef(null);
   const inViewRaw = useInView(boxRef, { once: true, amount: 0 });
   const inView = disableReveal || inViewRaw;
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const scrollProgress = useLenisScrollProgress(containerRef);
   const imageY = useTransform(scrollProgress, [0, 1], [-parallaxAmount, parallaxAmount]);
+
+  const blurOverlay = blurSrc ? (
+    <motion.img
+      src={blurSrc}
+      aria-hidden
+      animate={{ opacity: isLoaded ? 0 : 1 }}
+      transition={{ duration: 0.7, ease: 'easeOut' }}
+      style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        filter: 'blur(24px)',
+        transform: 'scale(1.12)',
+        pointerEvents: 'none',
+      }}
+    />
+  ) : null;
 
   // ── Natural-size mode: clipPath reveal + parallax ─────────────────────────
   if (naturalSize) {
@@ -62,11 +83,15 @@ export const ImageBoxView = ({
             y: inView ? 0 : 28,
           }}
           transition={{ duration, ease: EASE, delay }}
-          style={{ width }}
+          style={{ width, position: 'relative', overflow: 'hidden', borderRadius: r }}
         >
+          {blurOverlay}
           <motion.img
             src={src}
             alt={alt}
+            animate={{ opacity: isLoaded ? 1 : 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            onLoad={() => setIsLoaded(true)}
             style={{
               width: '100%',
               height: 'auto',
@@ -91,13 +116,16 @@ export const ImageBoxView = ({
           width,
           overflow: 'hidden',
           borderRadius,
+          position: 'relative',
         }}
       >
+        {blurOverlay}
         <motion.img
           src={src}
           alt={alt}
-          animate={{ scale: inView ? 1 : initialScale }}
-          transition={{ duration: duration * 1.25, ease: EASE, delay }}
+          animate={{ scale: inView ? 1 : initialScale, opacity: isLoaded ? 1 : 0 }}
+          transition={{ duration: duration * 1.25, ease: EASE, delay, opacity: { duration: 0.7, ease: 'easeOut', delay: 0 } }}
+          onLoad={() => setIsLoaded(true)}
           style={{
             width: '100%',
             height: height * PARALLAX_OVERFLOW,
@@ -116,6 +144,7 @@ export const ImageBoxView = ({
 ImageBoxView.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
+  blurSrc: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.number,
   initialHeight: PropTypes.number,
