@@ -30,6 +30,7 @@ export const HoverReveal = ({
   animate: externalAnimate,
 }) => {
   const [hovered, setHovered] = useState(false);
+  const isHovered = externalAnimate === 'hover' || hovered;
   const segments = toSegments(children);
 
   const renderSegments = (restY, hoverY) =>
@@ -41,7 +42,7 @@ export const HoverReveal = ({
         // initial prevents Framer Motion from animating from y:0 on mount.
         style={{ display: 'inline-block', whiteSpace: 'pre', paddingBlock: '0.15em' }}
         initial={{ y: restY }}
-        animate={{ y: hovered ? hoverY : restY }}
+        animate={{ y: isHovered ? hoverY : restY }}
         transition={{ duration, ease: EASE, delay: i * stagger }}
       >
         {seg}

@@ -37,21 +37,22 @@ export const ImageBoxView = ({
   delay = 0.3,
   // When true: uses clipPath reveal so image shows at natural size — no cropping
   naturalSize = false,
+  disableReveal = false,
 }) => {
   const resolvedInitialHeight = initialHeight ?? height * 0.5;
   const containerRef = useRef(null);
   const boxRef = useRef(null);
-  const inView = useInView(boxRef, { once: true, amount: 0.2 });
+  const inViewRaw = useInView(boxRef, { once: true, amount: 0 });
+  const inView = disableReveal || inViewRaw;
 
   const scrollProgress = useLenisScrollProgress(containerRef);
-  const imageY = useTransform(scrollProgress, [0, 1], [-parallaxAmount / 2, parallaxAmount / 2]);
+  const imageY = useTransform(scrollProgress, [0, 1], [-parallaxAmount, parallaxAmount]);
 
   // ── Natural-size mode: clipPath reveal + parallax ─────────────────────────
   if (naturalSize) {
     const r = `${borderRadius}px`;
-    const restingScale = 1 + (parallaxAmount / 2) / 500;
     return (
-      <div ref={containerRef} style={{ width, overflow: 'hidden', borderRadius: r }}>
+      <div ref={containerRef} style={{ width }}>
         <motion.div
           ref={boxRef}
           animate={{
@@ -66,13 +67,11 @@ export const ImageBoxView = ({
           <motion.img
             src={src}
             alt={alt}
-            animate={{ scale: inView ? restingScale : initialScale }}
-            transition={{ duration: duration * 1.25, ease: EASE, delay }}
             style={{
               width: '100%',
               height: 'auto',
               display: 'block',
-              transformOrigin: 'center center',
+              borderRadius: r,
               y: imageY,
             }}
           />
