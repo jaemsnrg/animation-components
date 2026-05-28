@@ -1,24 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 export const ScrollSectionOverlap = ({ first, second }) => {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsDesktop(window.innerWidth >= 768);
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, []);
-
   return (
-    <div style={{ position: 'relative' }}>
-      <div style={isDesktop ? { position: 'sticky', top: 0, zIndex: 1 } : undefined}>
+    <div className="relative">
+      <div className="md:sticky md:top-0 md:z-[1]">
         {first}
       </div>
-      <div style={isDesktop ? { position: 'relative', zIndex: 2 } : undefined}>
+      <div className="md:relative md:z-[2]">
         {second}
       </div>
     </div>

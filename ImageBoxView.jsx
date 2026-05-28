@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect, useLayoutEffect, useCallback } from 'react';
 import { motion, useMotionValue, useTransform, useInView } from 'framer-motion';
 import { useLenis } from 'lenis/react';
 import PropTypes from 'prop-types';
@@ -59,7 +59,11 @@ export const ImageBoxView = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (sessionStorage.getItem('page-transitioning') === '1') {
+      setIsLoaded(true);
+      return;
+    }
     if (imgRef.current?.complete) setIsLoaded(true);
   }, []);
 
