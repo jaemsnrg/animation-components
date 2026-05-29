@@ -52,7 +52,7 @@ export const RevealText = ({
       {...(inView ? { whileInView: "visible", viewport: { once: true } } : { animate: "visible" })}
     >
       {characters.map((char, index) => (
-        <span key={index} style={{ clipPath: "inset(0 -0.15em)", display: "inline-block" }}>
+        <span key={index} style={{ clipPath: "inset(0 -0.15em -0.18em)", display: "inline-block" }}>
           <motion.span 
             variants={child} 
             style={{ display: "inline-block" }}
