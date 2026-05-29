@@ -5,10 +5,11 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { cn } from '../lib/utils';
 
-export const RevealText = ({ 
-  text, 
-  mode = 'stagger', 
-  duration = 0.8, 
+export const RevealText = ({
+  text,
+  mode = 'stagger',
+  duration = 0.8,
+  delay = 0,
   easing = [0.22, 1, 0.36, 1],
   className
 }) => {
@@ -16,12 +17,12 @@ export const RevealText = ({
 
   const container = {
     hidden: {},
-    visible: (i = 1) => ({
-      transition: { 
-        staggerChildren: 0.02, 
-        delayChildren: 0.03 * i,
+    visible: {
+      transition: {
+        staggerChildren: 0.02,
+        delayChildren: delay,
       },
-    }),
+    },
   };
 
   const child = {
@@ -66,6 +67,7 @@ RevealText.propTypes = {
   text: PropTypes.string.isRequired,
   mode: PropTypes.oneOf(['stagger']),
   duration: PropTypes.number,
+  delay: PropTypes.number,
   easing: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.number)
