@@ -10,6 +10,7 @@ export const RevealText = ({
   mode = 'stagger',
   duration = 0.8,
   delay = 0,
+  stagger = 0.02,
   easing = [0.22, 1, 0.36, 1],
   className
 }) => {
@@ -19,7 +20,7 @@ export const RevealText = ({
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.02,
+        staggerChildren: stagger,
         delayChildren: delay,
       },
     },
@@ -68,6 +69,7 @@ RevealText.propTypes = {
   mode: PropTypes.oneOf(['stagger']),
   duration: PropTypes.number,
   delay: PropTypes.number,
+  stagger: PropTypes.number,
   easing: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.number)
