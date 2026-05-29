@@ -50,7 +50,7 @@ export const RevealText = ({
       animate="visible"
     >
       {characters.map((char, index) => (
-        <span key={index} style={{ overflow: "hidden", display: "inline-block" }}>
+        <span key={index} style={{ clipPath: "inset(0 -0.15em)", display: "inline-block" }}>
           <motion.span 
             variants={child} 
             style={{ display: "inline-block" }}
