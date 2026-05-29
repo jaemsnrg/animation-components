@@ -11,7 +11,7 @@ export const RevealText = ({
   duration = 0.8,
   delay = 0,
   stagger = 0.02,
-  easing = [0.22, 1, 0.36, 1],
+  easing = [0.16, 1, 0.3, 1],
   className
 }) => {
   const characters = text.split('');
