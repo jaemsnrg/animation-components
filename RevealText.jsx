@@ -12,6 +12,7 @@ export const RevealText = ({
   delay = 0,
   stagger = 0.02,
   easing = [0.16, 1, 0.3, 1],
+  inView = false,
   className
 }) => {
   const characters = text.split('');
@@ -48,7 +49,7 @@ export const RevealText = ({
       className={cn("flex flex-wrap", className)}
       variants={container}
       initial="hidden"
-      animate="visible"
+      {...(inView ? { whileInView: "visible", viewport: { once: true } } : { animate: "visible" })}
     >
       {characters.map((char, index) => (
         <span key={index} style={{ clipPath: "inset(0 -0.15em)", display: "inline-block" }}>

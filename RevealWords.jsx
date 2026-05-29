@@ -11,6 +11,7 @@ export const RevealWords = ({
   delay = 0,
   stagger = 0.05,
   easing = [0.16, 1, 0.3, 1],
+  inView = false,
   className,
 }) => {
   const words = text.split(' ');
@@ -41,7 +42,7 @@ export const RevealWords = ({
       className={cn('flex flex-wrap', className)}
       variants={container}
       initial="hidden"
-      animate="visible"
+      {...(inView ? { whileInView: "visible", viewport: { once: true } } : { animate: "visible" })}
     >
       {words.map((word, index) => (
         <span key={index} style={{ clipPath: 'inset(0 -0.15em)', display: 'inline-block', marginRight: '0.25em' }}>
