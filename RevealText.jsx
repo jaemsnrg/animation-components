@@ -49,12 +49,13 @@ export const RevealText = ({
       className={cn("flex flex-wrap", className)}
       variants={container}
       initial="hidden"
+      aria-label={text}
       {...(inView ? { whileInView: "visible", viewport: { once: true } } : { animate: "visible" })}
     >
       {characters.map((char, index) => (
-        <span key={index} style={{ clipPath: "inset(0 -0.15em -0.18em)", display: "inline-block" }}>
-          <motion.span 
-            variants={child} 
+        <span key={index} aria-hidden="true" style={{ clipPath: "inset(0 -0.15em -0.18em)", display: "inline-block" }}>
+          <motion.span
+            variants={child}
             style={{ display: "inline-block" }}
           >
             {char === " " ? "\u00A0" : char}
