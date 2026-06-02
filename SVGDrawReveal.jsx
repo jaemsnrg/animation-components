@@ -38,6 +38,7 @@ function parseSvgData(text) {
 
 export function SVGDrawReveal({
   src,
+  color,
   strokeWidth = 8,
   drawDuration = 2,
   fillDuration = 0.9,
@@ -99,9 +100,9 @@ export function SVGDrawReveal({
             <g key={i} transform={path.transform}>
               <motion.path
                 d={path.d}
-                fill={path.fill}
+                fill={color ?? path.fill}
                 fillRule={path.fillRule}
-                stroke={path.fill}
+                stroke={color ?? path.fill}
                 strokeWidth={strokeWidth}
                 strokeLinecap="round"
                 strokeLinejoin="round"
