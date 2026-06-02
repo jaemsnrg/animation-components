@@ -40,6 +40,7 @@ export function SVGDrawReveal({
   src,
   color,
   once = true,
+  isActive,
   strokeWidth = 8,
   drawDuration = 2,
   fillDuration = 0.9,
@@ -51,6 +52,8 @@ export function SVGDrawReveal({
   const ref = useRef(null);
   const [svgData, setSvgData] = useState(null);
   const isInView = useInView(ref, { once, amount: 0.3 });
+  // isActive=false forces hidden instantly; isActive=true or undefined defers to isInView
+  const shouldShow = isActive === false ? false : isInView;
 
   useEffect(() => {
     fetch(src)
@@ -88,7 +91,7 @@ export function SVGDrawReveal({
       style={{ lineHeight: 0, ...style }}
       variants={wrapperVariants}
       initial="hidden"
-      animate={isInView ? 'visible' : 'hidden'}
+      animate={shouldShow ? 'visible' : 'hidden'}
     >
       {svgData && (
         <svg
@@ -109,7 +112,7 @@ export function SVGDrawReveal({
                 strokeLinejoin="round"
                 variants={pathVariants}
                 initial="hidden"
-                animate={isInView ? 'visible' : 'hidden'}
+                animate={shouldShow ? 'visible' : 'hidden'}
               />
             </g>
           ))}
