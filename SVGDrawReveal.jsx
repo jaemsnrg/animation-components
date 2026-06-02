@@ -39,6 +39,7 @@ function parseSvgData(text) {
 export function SVGDrawReveal({
   src,
   color,
+  once = true,
   strokeWidth = 8,
   drawDuration = 2,
   fillDuration = 0.9,
@@ -49,7 +50,7 @@ export function SVGDrawReveal({
 }) {
   const ref = useRef(null);
   const [svgData, setSvgData] = useState(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInView(ref, { once, amount: 0.3 });
 
   useEffect(() => {
     fetch(src)
@@ -58,7 +59,7 @@ export function SVGDrawReveal({
   }, [src]);
 
   const wrapperVariants = {
-    hidden: { y: translateY, opacity: 0 },
+    hidden: { y: translateY, opacity: 0, transition: { duration: 0 } },
     visible: {
       y: 0,
       opacity: 1,
@@ -67,7 +68,7 @@ export function SVGDrawReveal({
   };
 
   const pathVariants = {
-    hidden: { pathLength: 0, fillOpacity: 0, strokeOpacity: 1 },
+    hidden: { pathLength: 0, fillOpacity: 0, strokeOpacity: 1, transition: { duration: 0 } },
     visible: {
       pathLength: 1,
       fillOpacity: 1,
