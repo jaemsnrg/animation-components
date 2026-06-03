@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { cn } from '../lib/utils';
@@ -23,10 +23,12 @@ export const VerticalScrollList = ({
   itemHeight = 50 
 }) => {
   const [index, setIndex] = useState(0);
-
-  // For infinite scroll, we duplicate the items to create a seamless loop
-  // We need at least enough items to fill the view plus one for the transition
   const [isAnimating, setIsAnimating] = useState(true);
+  const [inViewport, setInViewport] = useState(true);
+  const [tabVisible, setTabVisible] = useState(true);
+  const containerRef = useRef(null);
+
+  const isVisible = inViewport && tabVisible;
 
   const extendedItems = useMemo(() => {
     if (items.length === 0) return [];
@@ -35,7 +37,24 @@ export const VerticalScrollList = ({
   }, [items, visibleRows]);
 
   useEffect(() => {
-    if (items.length <= 1) return;
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInViewport(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onVisibilityChange = () => setTabVisible(!document.hidden);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', onVisibilityChange);
+  }, []);
+
+  useEffect(() => {
+    if (items.length <= 1 || !isVisible) return;
 
     const timer = setInterval(() => {
       setIndex((prev) => prev + 1);
@@ -43,7 +62,7 @@ export const VerticalScrollList = ({
     }, interval * 1000);
 
     return () => clearInterval(timer);
-  }, [items.length, interval]);
+  }, [items.length, interval, isVisible]);
 
   const handleAnimationComplete = () => {
     if (index >= items.length) {
@@ -53,7 +72,8 @@ export const VerticalScrollList = ({
   };
 
   return (
-    <div 
+    <div
+      ref={containerRef}
       className={cn("relative overflow-hidden flex flex-col items-center", className)}
       style={{ 
         height: visibleRows * itemHeight,
