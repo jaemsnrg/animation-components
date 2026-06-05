@@ -55,6 +55,8 @@ export const HoverReveal = ({
       animate={externalAnimate ?? 'rest'}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onFocus={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
       {...(!externalAnimate && { whileHover: 'hover' })}
       style={{
         display: 'inline-flex',
