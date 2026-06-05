@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 
 export const TickerTape = ({ text, speed = 1, baseVelocity = 100, fontSize = '5rem', fontWeight = 900 }) => {
   return (
-    <div className="ticker-tape-container" aria-label={text} style={{ overflow: 'hidden', whiteSpace: 'nowrap', display: 'flex' }}>
+    <div className="ticker-tape-container" style={{ overflow: 'hidden', whiteSpace: 'nowrap', display: 'flex' }}>
+      <span className="sr-only">{text}</span>
       <motion.div
         className="ticker-tape-scroller"
         aria-hidden="true"

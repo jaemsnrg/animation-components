@@ -42,9 +42,9 @@ export const RevealWords = ({
       className={cn('flex flex-wrap', className)}
       variants={container}
       initial="hidden"
-      aria-label={text}
       {...(inView ? { whileInView: "visible", viewport: { once: true } } : { animate: "visible" })}
     >
+      <span className="sr-only">{text}</span>
       {words.map((word, index) => (
         <span key={index} aria-hidden="true" style={{ clipPath: 'inset(0 -0.15em)', display: 'inline-block', marginRight: '0.25em' }}>
           <motion.span variants={child} style={{ display: 'inline-block' }}>

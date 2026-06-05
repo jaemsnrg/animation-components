@@ -49,9 +49,9 @@ export const RevealText = ({
       className={cn("flex flex-wrap", className)}
       variants={container}
       initial="hidden"
-      aria-label={text}
       {...(inView ? { whileInView: "visible", viewport: { once: true } } : { animate: "visible" })}
     >
+      <span className="sr-only">{text}</span>
       {characters.map((char, index) => (
         <span key={index} aria-hidden="true" style={{ clipPath: "inset(0 -0.15em -0.18em)", display: "inline-block" }}>
           <motion.span
