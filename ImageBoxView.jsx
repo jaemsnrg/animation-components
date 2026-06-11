@@ -54,6 +54,8 @@ export const ImageBoxView = ({
   const resolvedInitialHeight = initialHeight ?? height * 0.5;
   const containerRef = useRef(null);
   const boxRef = useRef(null);
+  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches;
+  const effectiveParallax = isMobile ? parallaxAmount * 0.3 : parallaxAmount;
   const inViewRaw = useInView(boxRef, { once: true, amount: 0 });
   const inView = disableReveal || inViewRaw;
   const [isLoaded, setIsLoaded] = useState(false);
@@ -68,7 +70,7 @@ export const ImageBoxView = ({
   }, []);
 
   const scrollProgress = useLenisScrollProgress(containerRef);
-  const imageY = useTransform(scrollProgress, [0, 1], [-parallaxAmount, parallaxAmount]);
+  const imageY = useTransform(scrollProgress, [0, 1], [-effectiveParallax, effectiveParallax]);
 
   // ── Natural-size mode: clipPath reveal + parallax ─────────────────────────
   if (naturalSize) {
