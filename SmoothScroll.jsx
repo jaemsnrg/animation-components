@@ -2,7 +2,7 @@
 
 import { ReactLenis, useLenis } from 'lenis/react';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './lenis.css';
 
 function LenisLinkStopper() {
@@ -60,7 +60,13 @@ const isSafari = () =>
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 export const SmoothScroll = ({ children, options = {} }) => {
-  if (isMobile() || isSafari()) {
+  const [lenisEnabled, setLenisEnabled] = useState(false);
+
+  useEffect(() => {
+    setLenisEnabled(!isMobile() && !isSafari());
+  }, []);
+
+  if (!lenisEnabled) {
     return <>{children}</>;
   }
 

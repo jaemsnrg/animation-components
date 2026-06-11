@@ -54,8 +54,12 @@ export const ImageBoxView = ({
   const resolvedInitialHeight = initialHeight ?? height * 0.5;
   const containerRef = useRef(null);
   const boxRef = useRef(null);
-  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches;
-  const effectiveParallax = isMobile ? parallaxAmount * 0.3 : parallaxAmount;
+  const [effectiveParallax, setEffectiveParallax] = useState(parallaxAmount);
+  useEffect(() => {
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      setEffectiveParallax(parallaxAmount * 0.3);
+    }
+  }, [parallaxAmount]);
   const inViewRaw = useInView(boxRef, { once: true, amount: 0 });
   const inView = disableReveal || inViewRaw;
   const [isLoaded, setIsLoaded] = useState(false);
