@@ -13,6 +13,7 @@ export const RevealText = ({
   stagger = 0.02,
   easing = [0.16, 1, 0.3, 1],
   inView = false,
+  nowrap = false,
   className
 }) => {
   const characters = text.split('');
@@ -46,7 +47,7 @@ export const RevealText = ({
 
   return (
     <motion.div
-      className={cn("flex flex-wrap", className)}
+      className={cn("flex", nowrap ? "flex-nowrap" : "flex-wrap", className)}
       variants={container}
       initial="hidden"
       {...(inView ? { whileInView: "visible", viewport: { once: true } } : { animate: "visible" })}
@@ -76,6 +77,8 @@ RevealText.propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.number)
   ]),
+  inView: PropTypes.bool,
+  nowrap: PropTypes.bool,
   className: PropTypes.string,
 };
 
