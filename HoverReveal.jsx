@@ -37,10 +37,12 @@ export const HoverReveal = ({
     segments.map((seg, i) => (
       <motion.span
         key={i}
-        // paddingBlock matches the ghost wrapper's paddingBlock so span height
-        // equals container height — keeps y percentages in sync with the clip.
-        // initial prevents Framer Motion from animating from y:0 on mount.
-        style={{ display: 'inline-block', whiteSpace: 'pre', paddingBlock: '0.15em' }}
+        // height: 100% locks each segment to the wrapper height so translateY %
+        // is always relative to the wrapper, not the segment's intrinsic size.
+        // Without this, mixed-size children (e.g. small text + big icon) make
+        // the wrapper taller than text segments and `y: 105%` doesn't fully
+        // clip the incoming layer — content leaks at the wrapper bottom.
+        style={{ display: 'inline-flex', alignItems: 'center', height: '100%', whiteSpace: 'pre' }}
         initial={{ y: restY }}
         animate={{ y: isHovered ? hoverY : restY }}
         transition={{ duration, ease: EASE, delay: i * stagger }}
