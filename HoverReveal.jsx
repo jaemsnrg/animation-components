@@ -9,11 +9,13 @@ const EASE = [0.448, 0.067, 0.119, 0.994];
 
 // Split children into per-character segments so each can be staggered.
 // Non-string children (icons, elements) animate as a single unit.
+// Regular spaces are swapped for non-breaking spaces so they render inside
+// `display: inline-flex` segments (flex layout collapses whitespace-only items).
 function toSegments(children) {
   const segments = [];
   React.Children.forEach(children, (child) => {
     if (typeof child === 'string') {
-      [...child].forEach((char) => segments.push(char));
+      [...child].forEach((char) => segments.push(char === ' ' ? ' ' : char));
     } else {
       segments.push(child);
     }
