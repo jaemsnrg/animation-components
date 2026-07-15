@@ -9,7 +9,10 @@ function LenisLinkStopper() {
   const lenis = useLenis();
 
   useEffect(() => {
-    if (!lenis) return;
+    // On mobile/Safari the gate below destroys `lenis`, but this closure keeps
+    // referencing the dead instance — guard the same way rather than calling
+    // scrollTo() on a destroyed Lenis.
+    if (!lenis || isMobile() || isSafari()) return;
 
     const handleMouseDown = (e) => {
       const link = e.target.closest('a');
@@ -59,19 +62,21 @@ const isSafari = () =>
   typeof navigator !== 'undefined' &&
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-// Toggles the already-mounted Lenis instance on/off instead of conditionally
-// rendering <ReactLenis>, which would swap the tree's root element type and
-// force a remount (and re-play) of every child animation on load.
+// Tears down the already-mounted Lenis instance on mobile/Safari instead of
+// conditionally rendering <ReactLenis>, which would swap the tree's root
+// element type and force a remount (and re-play) of every child animation on
+// load. Uses destroy() rather than stop(): stop() adds the `lenis-stopped`
+// class, which lenis.css maps to `overflow: hidden` on <html> — that's meant
+// for modal-style scroll locking, not "fall back to native scroll", and it
+// froze the page entirely on mobile. destroy() removes Lenis's listeners and
+// classes so native scrolling just takes over.
 function LenisAvailabilityGate() {
   const lenis = useLenis();
 
   useEffect(() => {
     if (!lenis) return;
-
     if (isMobile() || isSafari()) {
-      lenis.stop();
-    } else {
-      lenis.start();
+      lenis.destroy();
     }
   }, [lenis]);
 
@@ -79,12 +84,18 @@ function LenisAvailabilityGate() {
 }
 
 export const SmoothScroll = ({ children, options = {} }) => {
+  // syncTouch hijacks touchmove (preventDefault) to drive scroll via JS transforms;
+  // keep it off for mobile/Safari, which LenisAvailabilityGate tears down anyway,
+  // to avoid a hijacked-then-abandoned touchmove listener during the gap before
+  // that effect runs.
+  const disableLenis = isMobile() || isSafari();
+
   return (
     <ReactLenis root options={{
       lerp: 0.1,
       duration: 1.5,
       smoothWheel: true,
-      syncTouch: true,
+      syncTouch: !disableLenis,
       touchMultiplier: 1.75,
       ...options
     }}>
