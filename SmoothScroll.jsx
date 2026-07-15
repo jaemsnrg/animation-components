@@ -2,7 +2,7 @@
 
 import { ReactLenis, useLenis } from 'lenis/react';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import './lenis.css';
 
 function LenisLinkStopper() {
@@ -59,17 +59,26 @@ const isSafari = () =>
   typeof navigator !== 'undefined' &&
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
-export const SmoothScroll = ({ children, options = {} }) => {
-  const [lenisEnabled, setLenisEnabled] = useState(false);
+// Toggles the already-mounted Lenis instance on/off instead of conditionally
+// rendering <ReactLenis>, which would swap the tree's root element type and
+// force a remount (and re-play) of every child animation on load.
+function LenisAvailabilityGate() {
+  const lenis = useLenis();
 
   useEffect(() => {
-    setLenisEnabled(!isMobile() && !isSafari());
-  }, []);
+    if (!lenis) return;
 
-  if (!lenisEnabled) {
-    return <>{children}</>;
-  }
+    if (isMobile() || isSafari()) {
+      lenis.stop();
+    } else {
+      lenis.start();
+    }
+  }, [lenis]);
 
+  return null;
+}
+
+export const SmoothScroll = ({ children, options = {} }) => {
   return (
     <ReactLenis root options={{
       lerp: 0.1,
@@ -79,6 +88,7 @@ export const SmoothScroll = ({ children, options = {} }) => {
       touchMultiplier: 1.75,
       ...options
     }}>
+      <LenisAvailabilityGate />
       <LenisLinkStopper />
       {children}
     </ReactLenis>
