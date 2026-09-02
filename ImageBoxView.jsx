@@ -12,6 +12,16 @@ const EASE = [0.448, 0.067, 0.119, 0.994];
 // Extra image height factor to allow parallax movement without blank edges
 const PARALLAX_OVERFLOW = 1.3;
 
+// Clip-path insets keyed by the edge the reveal sweeps FROM — same scheme as
+// ImageDirectionalReveal. 'up' sweeps from the bottom edge upward, etc.
+const CLIP_HIDDEN = {
+  up: 'inset(100% 0% 0% 0%)',
+  down: 'inset(0% 0% 100% 0%)',
+  left: 'inset(0% 100% 0% 0%)',
+  right: 'inset(0% 0% 0% 100%)',
+};
+const CLIP_VISIBLE = (r) => `inset(0% 0% 0% 0% round ${r})`;
+
 function useLenisScrollProgress(ref) {
   const progress = useMotionValue(0);
 
@@ -50,6 +60,10 @@ export const ImageBoxView = ({
   // When true: uses clipPath reveal so image shows at natural size — no cropping
   naturalSize = false,
   disableReveal = false,
+  // When set on the fixed-height (box) mode: reveals via a directional clipPath
+  // sweep instead of the height-grow + scale-zoom effect. The box height never
+  // changes. One of 'up' | 'down' | 'left' | 'right'.
+  revealDirection,
 }) => {
   const resolvedInitialHeight = initialHeight ?? height * 0.5;
   const containerRef = useRef(null);
@@ -134,6 +148,60 @@ export const ImageBoxView = ({
     );
   }
 
+  // ── Fixed-height mode, directional clip reveal ────────────────────────────
+  // Box height is constant throughout — only a clipPath sweep reveals the image.
+  if (revealDirection) {
+    const r = `${borderRadius}px`;
+    return (
+      <div ref={containerRef} style={{ width }}>
+        <div style={{ width, height, overflow: 'hidden', borderRadius, display: 'grid' }}>
+          {blurSrc && (
+            <motion.img
+              src={blurSrc}
+              aria-hidden
+              initial={{ opacity: 1 }}
+              animate={{ opacity: isLoaded ? 0 : 1 }}
+              transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
+              style={{
+                gridArea: '1/1',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                filter: 'blur(40px)',
+                transform: 'scale(1.15)',
+                imageRendering: 'pixelated',
+              }}
+            />
+          )}
+          <motion.div
+            initial={{ clipPath: CLIP_HIDDEN[revealDirection] }}
+            animate={{ clipPath: inView ? CLIP_VISIBLE(r) : CLIP_HIDDEN[revealDirection] }}
+            transition={{ duration, ease: EASE, delay }}
+            style={{ gridArea: '1/1', width: '100%', height: '100%', overflow: 'hidden' }}
+          >
+            <motion.img
+              ref={imgRef}
+              src={src}
+              alt={alt}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isLoaded ? 1 : 0 }}
+              transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
+              onLoad={() => setIsLoaded(true)}
+              style={{
+                width: '100%',
+                height: height * PARALLAX_OVERFLOW,
+                objectFit: 'cover',
+                display: 'block',
+                y: imageY,
+                marginTop: -(height * (PARALLAX_OVERFLOW - 1)) / 2,
+              }}
+            />
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
+
   // ── Fixed-height mode (original behaviour) ────────────────────────────────
   return (
     <div ref={containerRef} style={{ width }}>
@@ -203,4 +271,6 @@ ImageBoxView.propTypes = {
   duration: PropTypes.number,
   delay: PropTypes.number,
   naturalSize: PropTypes.bool,
+  disableReveal: PropTypes.bool,
+  revealDirection: PropTypes.oneOf(['up', 'down', 'left', 'right']),
 };

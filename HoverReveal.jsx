@@ -9,11 +9,13 @@ const EASE = [0.448, 0.067, 0.119, 0.994];
 
 // Split children into per-character segments so each can be staggered.
 // Non-string children (icons, elements) animate as a single unit.
+// Regular spaces are swapped for non-breaking spaces so they render inside
+// `display: inline-flex` segments (flex layout collapses whitespace-only items).
 function toSegments(children) {
   const segments = [];
   React.Children.forEach(children, (child) => {
     if (typeof child === 'string') {
-      [...child].forEach((char) => segments.push(char));
+      [...child].forEach((char) => segments.push(char === ' ' ? ' ' : char));
     } else {
       segments.push(child);
     }
@@ -37,10 +39,12 @@ export const HoverReveal = ({
     segments.map((seg, i) => (
       <motion.span
         key={i}
-        // paddingBlock matches the ghost wrapper's paddingBlock so span height
-        // equals container height — keeps y percentages in sync with the clip.
-        // initial prevents Framer Motion from animating from y:0 on mount.
-        style={{ display: 'inline-block', whiteSpace: 'pre', paddingBlock: '0.15em' }}
+        // height: 100% locks each segment to the wrapper height so translateY %
+        // is always relative to the wrapper, not the segment's intrinsic size.
+        // Without this, mixed-size children (e.g. small text + big icon) make
+        // the wrapper taller than text segments and `y: 105%` doesn't fully
+        // clip the incoming layer — content leaks at the wrapper bottom.
+        style={{ display: 'inline-flex', alignItems: 'center', height: '100%', whiteSpace: 'pre' }}
         initial={{ y: restY }}
         animate={{ y: isHovered ? hoverY : restY }}
         transition={{ duration, ease: EASE, delay: i * stagger }}
