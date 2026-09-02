@@ -20,7 +20,7 @@ const CLIP_HIDDEN = {
   left: 'inset(0% 100% 0% 0%)',
   right: 'inset(0% 0% 0% 100%)',
 };
-const CLIP_VISIBLE = (r) => `inset(0% 0% 0% 0% round ${r})`;
+const CLIP_VISIBLE = 'inset(0% 0% 0% 0%)';
 
 function useLenisScrollProgress(ref) {
   const progress = useMotionValue(0);
@@ -150,32 +150,17 @@ export const ImageBoxView = ({
 
   // ── Fixed-height mode, directional clip reveal ────────────────────────────
   // Box height is constant throughout — only a clipPath sweep reveals the image.
+  // Gated on both scroll visibility AND the image being loaded, so the clip
+  // never opens onto a still-loading image (which would otherwise race an
+  // independent opacity fade — there isn't one here, the clip is the only reveal).
   if (revealDirection) {
-    const r = `${borderRadius}px`;
+    const ready = inView && isLoaded;
     return (
       <div ref={containerRef} style={{ width }}>
-        <div style={{ width, height, overflow: 'hidden', borderRadius, display: 'grid' }}>
-          {blurSrc && (
-            <motion.img
-              src={blurSrc}
-              aria-hidden
-              initial={{ opacity: 1 }}
-              animate={{ opacity: isLoaded ? 0 : 1 }}
-              transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
-              style={{
-                gridArea: '1/1',
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                filter: 'blur(40px)',
-                transform: 'scale(1.15)',
-                imageRendering: 'pixelated',
-              }}
-            />
-          )}
+        <div ref={boxRef} style={{ width, height, overflow: 'hidden', borderRadius, display: 'grid' }}>
           <motion.div
             initial={{ clipPath: CLIP_HIDDEN[revealDirection] }}
-            animate={{ clipPath: inView ? CLIP_VISIBLE(r) : CLIP_HIDDEN[revealDirection] }}
+            animate={{ clipPath: ready ? CLIP_VISIBLE : CLIP_HIDDEN[revealDirection] }}
             transition={{ duration, ease: EASE, delay }}
             style={{ gridArea: '1/1', width: '100%', height: '100%', overflow: 'hidden' }}
           >
@@ -183,9 +168,6 @@ export const ImageBoxView = ({
               ref={imgRef}
               src={src}
               alt={alt}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isLoaded ? 1 : 0 }}
-              transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
               onLoad={() => setIsLoaded(true)}
               style={{
                 width: '100%',

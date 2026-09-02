@@ -16,7 +16,7 @@ const CLIP_HIDDEN = {
   left: 'inset(0% 100% 0% 0%)',
   right: 'inset(0% 0% 0% 100%)',
 };
-const CLIP_VISIBLE = (r) => `inset(0% 0% 0% 0% round ${r})`;
+const CLIP_VISIBLE = 'inset(0% 0% 0% 0%)';
 
 export const ImageDirectionalReveal = ({
   src,
@@ -54,7 +54,7 @@ export const ImageDirectionalReveal = ({
     >
       <motion.div
         initial={{ clipPath: hiddenClip }}
-        animate={{ clipPath: ready ? CLIP_VISIBLE(r) : hiddenClip }}
+        animate={{ clipPath: ready ? CLIP_VISIBLE : hiddenClip }}
         transition={{ duration, ease: EASE, delay }}
         style={{ width: '100%', height: '100%', display: 'grid', overflow: 'hidden' }}
       >
