@@ -50,4 +50,21 @@
 @layer base {
   * { @apply border-border outline-ring; }
   body { @apply bg-background text-foreground font-sans antialiased; }
+  /* Tailwind's preflight resets buttons to the default cursor; restore the pointer on anything interactive. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [role="tab"]:not(:disabled),
+  [role="menuitem"]:not([data-disabled]),
+  [role="menuitemcheckbox"]:not([data-disabled]),
+  [role="menuitemradio"]:not([data-disabled]),
+  [role="radio"]:not(:disabled),
+  a[href],
+  summary,
+  label[for] {
+    cursor: pointer;
+  }
+  button:disabled,
+  [data-disabled] {
+    cursor: default;
+  }
 }
