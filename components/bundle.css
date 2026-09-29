@@ -81,6 +81,18 @@
 .cx-chip--selected { background: var(--bg-inverted); color: var(--text-inverted); border-color: transparent; }
 .cx-chip--selected:hover { background: var(--hover-primary); }
 
+/* ---------- ImageCaption (title + frosted credit over an image) ---------- */
+.cx-imgcap {
+  display: flex; flex-direction: column; align-items: center; gap: var(--space-3); text-align: center;
+  color: var(--text-onmedia); font: 400 16px/1.4 var(--font-sans); letter-spacing: -0.02em;
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.25);
+}
+.cx-imgcap__credit {
+  display: inline-flex; align-items: center; padding: var(--space-3) var(--space-5); border-radius: var(--radius-2xl);
+  background: color-mix(in srgb, var(--text-onmedia) 25%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(1.5); backdrop-filter: blur(12px) saturate(1.5);
+}
+
 /* ---------- Input ---------- */
 .cx-field { display: flex; flex-direction: column; gap: var(--space-1-5); width: 100%; max-width: 360px; }
 .cx-field__label { font: 500 14px/1.43 var(--font-sans); letter-spacing: -0.02em; color: var(--text-primary); }
