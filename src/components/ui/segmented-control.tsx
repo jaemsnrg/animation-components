@@ -67,7 +67,7 @@ function SegmentedControl({ className, children, value, defaultValue, onValueCha
         if (value === undefined) setInner(next)
         onValueChange?.(next)
       }}
-      className={cn("relative inline-flex items-center gap-1 rounded-full bg-muted p-1", className)}
+      className={cn("relative inline-flex w-fit items-center gap-1 rounded-full bg-muted p-1", className)}
       {...props}
     >
       <span

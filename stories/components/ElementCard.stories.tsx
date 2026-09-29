@@ -19,3 +19,13 @@ export const Overview: Story = {
     </div>
   ),
 }
+
+export const Text: Story = {
+  render: () => (
+    <div className="grid max-w-3xl grid-cols-3 gap-4">
+      <ElementCard index="01" title="Lighthouse scores: 99+" description="The best case scores with Shopify stores is generally 65 - 85." />
+      <ElementCard index="02" title="Completely custom design" description="Every screen designed from a blank canvas for this store. No theme template was used." />
+      <ElementCard index="03" title="Headless storefront" description="Next.js frontend built with design tokens and Storybook." />
+    </div>
+  ),
+}

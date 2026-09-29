@@ -12,7 +12,7 @@ type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
   render: () => (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col items-start gap-4">
       <SegmentedControl defaultValue="light" aria-label="Theme">
         <SegmentedControlItem value="light" aria-label="Light"><SunIcon /></SegmentedControlItem>
         <SegmentedControlItem value="dark" aria-label="Dark"><MoonIcon /></SegmentedControlItem>
