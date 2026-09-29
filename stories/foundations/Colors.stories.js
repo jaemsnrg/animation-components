@@ -2,7 +2,7 @@ import { byType, isSemantic, semanticGroup, SEMANTIC_GROUPS, page, esc, codeChip
 
 export default {
   title: 'Foundations/Colors',
-  parameters: { docs: { description: { component: 'Primitive palette and the semantic roles built on it, resolved for both themes. Use the semantic tokens in components; primitives exist to define them.' } } },
+  parameters: { layout: 'fullscreen', docs: { description: { component: 'Primitive palette and the semantic roles built on it, resolved for both themes. Use the semantic tokens in components; primitives exist to define them.' } } },
 };
 
 const checker = 'background-image:conic-gradient(var(--gray-200) 25%,transparent 0 50%,var(--gray-200) 0 75%,transparent 0);background-size:8px 8px';

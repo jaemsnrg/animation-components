@@ -2,7 +2,7 @@ import { byPrefix, byType, page, esc, codeChip } from '../lib.js';
 
 export default {
   title: 'Foundations/Layout',
-  parameters: { docs: { description: { component: 'Spacing, radius, elevation and motion tokens.' } } },
+  parameters: { layout: 'fullscreen', docs: { description: { component: 'Spacing, radius, elevation and motion tokens.' } } },
 };
 
 const row = (t, visual) => `

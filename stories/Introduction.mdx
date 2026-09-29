@@ -14,7 +14,7 @@ tokens.json (DTCG)  ──►  scripts/build-tokens.mjs (Style Dictionary)
 ```
 
 - **Foundations** previews colours (both themes), type, spacing, radius, shadows and motion, using the generated Tailwind utilities.
-- **Components** are plain HTML + `components/bundle.css`, styled only with token variables.
+- **Components** are [shadcn/ui](https://ui.shadcn.com) components (React + Radix + Tailwind) in `src/components/ui`, restyled to the Cosmos look. shadcn's variables (`--primary`, `--muted`, `--border`, …) are bound to the tokens in `src/styles/globals.css`, so dark mode and token changes flow through. The `components/*/README.md` files are the original design specs.
 - Use the **Theme** toolbar to switch light/dark; stories set `data-theme` on their own wrapper.
 
 ## Tailwind naming

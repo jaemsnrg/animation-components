@@ -1,6 +1,18 @@
 /* Tailwind v4 theme for Cosmos Study. Generated from tokens.json by scripts/build-tokens.mjs; do not edit.
    Use together with tokens.css, which defines the themed CSS variables these entries point at. */
 
+/* Drop Tailwind's default palette, type scale, radii, shadows and easings first: a reset only clears entries declared before it. */
+@theme {
+  --color-*: initial;
+  --font-sans: initial;
+  --font-serif: initial;
+  --font-mono: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --ease-*: initial;
+}
+
 /* Colours are indirections onto themed variables, so they must be inlined into utilities. */
 @theme inline {
   --color-gray-0: var(--gray-0);
@@ -75,12 +87,6 @@
 
 /* Everything else is theme-independent (or, for shadow-field-inset, overridden by tokens.css). */
 @theme {
-  --color-*: initial;
-  --font-*: initial;
-  --text-*: initial;
-  --radius-*: initial;
-  --shadow-*: initial;
-  --ease-*: initial;
   --font-sans: Geist, "Helvetica Neue", Arial, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, Menlo, monospace;
   --text-display-xxlarge: 72px;

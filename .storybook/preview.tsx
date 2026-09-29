@@ -1,11 +1,10 @@
+import type { Preview } from '@storybook/react-vite';
 import '../dist/tokens.css';
-import '../components/bundle.css';
-import './tailwind.css';
+import '../src/styles/globals.css';
 
-/** @type {import('@storybook/html-vite').Preview} */
-export default {
+const preview: Preview = {
   parameters: {
-    layout: 'fullscreen',
+    layout: 'padded',
     controls: { expanded: true },
     options: { storySort: { order: ['Introduction', 'Foundations', 'Components'] } },
     backgrounds: { disabled: true },
@@ -26,16 +25,13 @@ export default {
   },
   initialGlobals: { theme: 'light' },
   decorators: [
-    (story, context) => {
-      const wrap = document.createElement('div');
-      wrap.dataset.theme = context.globals.theme;
-      wrap.className = 'cx';
-      wrap.style.cssText = `background:var(--bg-primary);color:var(--text-primary);${context.viewMode === 'story' ? 'min-height:100vh;' : ''}`;
-      const out = story();
-      if (typeof out === 'string') wrap.innerHTML = out;
-      else wrap.append(out);
-      return wrap;
+    (Story, context) => {
+      // Set on <html> so portalled content (menus, popovers) inherits the theme too.
+      document.documentElement.dataset.theme = context.globals.theme;
+      return <Story />;
     },
   ],
   tags: ['autodocs'],
 };
+
+export default preview;

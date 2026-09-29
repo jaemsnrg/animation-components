@@ -2,7 +2,7 @@ import { byType, page, esc, codeChip } from '../lib.js';
 
 export default {
   title: 'Foundations/Typography',
-  parameters: { docs: { description: { component: 'Type styles from the `typography` tokens, rendered with the generated Tailwind `text-*` utilities.' } } },
+  parameters: { layout: 'fullscreen', docs: { description: { component: 'Type styles from the `typography` tokens, rendered with the generated Tailwind `text-*` utilities.' } } },
   argTypes: {
     text: { control: 'text', description: 'Override sample text (blank uses each style\'s sample).' },
   },

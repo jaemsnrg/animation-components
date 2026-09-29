@@ -135,7 +135,7 @@ ${typeClasses.join('\n')}
 const twKey = { space: (e) => e.name.replace(/^space-/, '').replace(/^(\d+)-(\d+)$/, '$1\\.$2') };
 const colorLines = by('color').map((e) => `  --color-${e.name}: var(--${e.name});`);
 const staticLines = [];
-staticLines.push('  --color-*: initial;', '  --font-*: initial;', '  --text-*: initial;', '  --radius-*: initial;', '  --shadow-*: initial;', '  --ease-*: initial;');
+const resetLines = ['  --color-*: initial;', '  --font-sans: initial;', '  --font-serif: initial;', '  --font-mono: initial;', '  --text-*: initial;', '  --radius-*: initial;', '  --shadow-*: initial;', '  --ease-*: initial;'];
 for (const e of by('fontFamily')) staticLines.push(decl(e, 'light'));
 for (const e of by('typography')) {
   const v = e.raw;
@@ -154,6 +154,11 @@ for (const e of by('cubicBezier')) staticLines.push(decl(e, 'light'));
 
 const tailwindCss = `/* Tailwind v4 theme for Cosmos Study. Generated from tokens.json by scripts/build-tokens.mjs; do not edit.
    Use together with tokens.css, which defines the themed CSS variables these entries point at. */
+
+/* Drop Tailwind's default palette, type scale, radii, shadows and easings first: a reset only clears entries declared before it. */
+@theme {
+${resetLines.join('\n')}
+}
 
 /* Colours are indirections onto themed variables, so they must be inlined into utilities. */
 @theme inline {
