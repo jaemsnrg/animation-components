@@ -49,10 +49,10 @@ export const Destination: Story = {
           <Button>Save</Button>
         </div>
         <DropdownMenuContent align="start" className="w-(--radix-dropdown-menu-trigger-width) min-w-96">
-          <DropdownMenuItem variant="rich" className="bg-accent">
+          <DropdownMenuItem variant="rich">
             <Avatar className="size-12"><AvatarFallback className={grad} /></Avatar>
             <DropdownMenuItemBody title="Profile" description="Display on profile" />
-            <Button asChild variant="filled" size="icon" className="bg-hover-secondary"><span><PlusIcon /></span></Button>
+            <Button asChild variant="filled" size="icon" className="transition-colors duration-75 group-data-[highlighted]/item:bg-hover-secondary"><span><PlusIcon /></span></Button>
           </DropdownMenuItem>
           <DropdownMenuItem variant="rich">
             <DropdownMenuItemTile><Mosaic /></DropdownMenuItemTile>

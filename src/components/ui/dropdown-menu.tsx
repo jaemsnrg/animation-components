@@ -41,13 +41,13 @@ function DropdownMenuContent({ className, sideOffset = 8, ...props }: React.Comp
  * `rich` is a destination row: 48px media, title over supporting line, optional trailing control.
  */
 const itemVariants = cva(
-  "relative flex w-full cursor-pointer items-center gap-4 rounded-2xl text-body font-medium! outline-none select-none transition-colors duration-fast focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:text-text-disabled [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5",
+  "group/item relative flex w-full cursor-pointer items-center gap-4 rounded-2xl text-body font-medium! outline-none select-none transition-colors duration-75 data-[highlighted]:bg-accent data-[highlighted]:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:text-text-disabled [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5",
   {
     variants: {
       variant: {
         default: "min-h-14 px-4 py-2",
         rich: "min-h-18 p-2",
-        destructive: "min-h-14 px-4 py-2 text-text-critical focus:text-text-critical",
+        destructive: "min-h-14 px-4 py-2 text-text-critical data-[highlighted]:text-text-critical",
       },
     },
     defaultVariants: { variant: "default" },
