@@ -8,57 +8,13 @@ main{max-width:1024px;margin:0 auto;padding:0 var(--space-8) 96px}
 .top{display:flex;justify-content:flex-end;padding:var(--space-6) var(--space-8)}
 .muted{color:var(--text-secondary);margin:4px 0 16px} section{padding:40px 0;border-top:.5px solid var(--border-primary)}
 h2{margin:0} .pad{padding:24px} .stage{border:.5px solid var(--border-primary);border-radius:var(--radius-3xl);overflow:hidden}
-.coverwrap{overflow-x:auto} .cover{width:960px} 
-  
-  .coverwrap { background:var(--bg-primary); color:var(--text-primary); font-family:var(--font-sans); overflow:hidden; }
-  .cover { position:relative; height:288px; overflow:hidden; }
-  .art { position:absolute; top:0; left:480px; width:480px; height:288px; overflow:hidden; }
-  .art svg { display:block; width:480px; height:288px; }
-  .ink { fill:var(--button-primary); }
-  .stone { fill:var(--gray-200); }
-  .lift { fill:var(--bg-elevation); }
-  .ash { fill:var(--gray-300); }
-  .signal { fill:var(--bg-badge); }
-  .hair { fill:none; stroke:var(--border-primary); stroke-width:.5; }
-  .card { rx:var(--radius-3xl); }
-  .pill16 { rx:8px; }
-  .words { position:absolute; left:var(--space-8); bottom:var(--space-6); max-width:440px; }
-  .name { margin:0; font-size:104px; line-height:.95; font-weight:400; letter-spacing:-.04em; color:var(--text-primary); }
-  .tag { margin:var(--space-2) 0 0 4px; font-size:14px; line-height:20px; letter-spacing:-.02em; color:var(--text-secondary); }
+
 
 .sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px} .sw{display:flex;align-items:center;gap:8px;font:400 12px/1.2 var(--font-mono)} .sw span{width:28px;height:28px;border-radius:var(--radius-full);border:.5px solid var(--border-primary);flex:none} code{font:400 12px var(--font-mono)} .sw b{font-weight:400}
 </style></head>
 <body class="cx">
 <div class="top"><button class="cx-btn cx-btn--outline cx-btn--sm" id="t">Toggle theme</button></div>
 <main>
-<div class="coverwrap">
-<div class="cover">
-<div class="art" aria-hidden="true">
-<svg viewBox="0 0 480 288" width="480" height="288">
-<!--
-  blocks      button-primary 176² (the ink: emphasis by inversion) · gray-200 176² bled off the top · bg-elevation 176² bled off top-right · gray-300 176² bled off bottom-right · bg-badge 16px disc once (the only hue, the unread dot) — ≈35% of 960×288
-  arrangement a staggered collection grid: four square cards on space-4 gutters, offset by a card-and-a-half like a scrolled masonry wall, bleeding off the top and right
-  pattern     pills from "radius-full on every control": space-4-tall caption pills (card title + meta) under the two left cards, a hairline border-primary on the ink card's twin
-  scales      card side 176 (11 × space-4), gutters space-4, pills space-4 tall at a space-6 pitch; corners radius-3xl, pills rx = half of space-4
--->
-<rect class="stone card" x="0" y="-48" width="176" height="176" rx="24"/>
-<rect class="stone pill16" x="0" y="144" width="104" height="16" rx="8"/>
-<rect class="ash pill16" x="0" y="168" width="64" height="16" rx="8"/>
-<rect class="ink card" x="192" y="16" width="176" height="176" rx="24"/>
-<circle class="signal" cx="344" cy="40" r="8"/>
-<rect class="stone pill16" x="192" y="208" width="120" height="16" rx="8"/>
-<rect class="ash pill16" x="192" y="232" width="72" height="16" rx="8"/>
-<rect class="lift card" x="384" y="-96" width="176" height="176" rx="24"/>
-<rect class="hair card" x="384" y="-96" width="176" height="176" rx="24"/>
-<rect class="ash card" x="384" y="96" width="176" height="176" rx="24"/>
-</svg>
-</div>
-<div class="words">
-  <h1 class="name">Cosmos<br>Study</h1>
-  <p class="tag">Ink, warm greys and pills. The images bring the colour.</p>
-</div>
-</div>
-</div>
 <section><h2 class="heading">Semantic colours</h2><p class="body-regular muted">Every role with its light/dark value. Primitives are in tokens.json.</p><div class="sws"><div class="sw"><span style="background:var(--bg-primary)"></span><b>bg-primary</b></div><div class="sw"><span style="background:var(--bg-paper)"></span><b>bg-paper</b></div><div class="sw"><span style="background:var(--bg-card)"></span><b>bg-card</b></div><div class="sw"><span style="background:var(--bg-cell)"></span><b>bg-cell</b></div><div class="sw"><span style="background:var(--bg-elevation)"></span><b>bg-elevation</b></div><div class="sw"><span style="background:var(--bg-light-elevation)"></span><b>bg-light-elevation</b></div><div class="sw"><span style="background:var(--bg-floating)"></span><b>bg-floating</b></div><div class="sw"><span style="background:var(--bg-inverted)"></span><b>bg-inverted</b></div><div class="sw"><span style="background:var(--bg-neutral)"></span><b>bg-neutral</b></div><div class="sw"><span style="background:var(--bg-toast)"></span><b>bg-toast</b></div><div class="sw"><span style="background:var(--bg-badge)"></span><b>bg-badge</b></div><div class="sw"><span style="background:var(--bg-critical)"></span><b>bg-critical</b></div><div class="sw"><span style="background:var(--bg-warning)"></span><b>bg-warning</b></div><div class="sw"><span style="background:var(--bg-scrim)"></span><b>bg-scrim</b></div><div class="sw"><span style="background:var(--text-primary)"></span><b>text-primary</b></div><div class="sw"><span style="background:var(--text-secondary)"></span><b>text-secondary</b></div><div class="sw"><span style="background:var(--text-tertiary)"></span><b>text-tertiary</b></div><div class="sw"><span style="background:var(--text-quaternary)"></span><b>text-quaternary</b></div><div class="sw"><span style="background:var(--text-disabled)"></span><b>text-disabled</b></div><div class="sw"><span style="background:var(--text-inverted)"></span><b>text-inverted</b></div><div class="sw"><span style="background:var(--text-link)"></span><b>text-link</b></div><div class="sw"><span style="background:var(--text-critical)"></span><b>text-critical</b></div><div class="sw"><span style="background:var(--text-warning)"></span><b>text-warning</b></div><div class="sw"><span style="background:var(--text-success)"></span><b>text-success</b></div><div class="sw"><span style="background:var(--text-onmedia)"></span><b>text-onmedia</b></div><div class="sw"><span style="background:var(--border-primary)"></span><b>border-primary</b></div><div class="sw"><span style="background:var(--border-hover)"></span><b>border-hover</b></div><div class="sw"><span style="background:var(--border-active)"></span><b>border-active</b></div><div class="sw"><span style="background:var(--border-critical)"></span><b>border-critical</b></div><div class="sw"><span style="background:var(--border-warning)"></span><b>border-warning</b></div><div class="sw"><span style="background:var(--button-primary)"></span><b>button-primary</b></div><div class="sw"><span style="background:var(--button-secondary)"></span><b>button-secondary</b></div><div class="sw"><span style="background:var(--button-floating)"></span><b>button-floating</b></div><div class="sw"><span style="background:var(--hover-primary)"></span><b>hover-primary</b></div><div class="sw"><span style="background:var(--hover-secondary)"></span><b>hover-secondary</b></div><div class="sw"><span style="background:var(--hover-tertiary)"></span><b>hover-tertiary</b></div></div></section>
 <section><h2 class="heading">Button</h2><p class="body-regular muted">Pill-shaped text button for every action, from Sign up to Follow; always <code>radius-full</code>, label in <code>body-medium</code> (15px/22px, 500).</p><div class="stage">
 <div class="cx pad">

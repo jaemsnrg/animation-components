@@ -1,26 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ContrastIcon, MoonIcon, SunIcon } from 'lucide-react'
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+import { SegmentedControl, SegmentedControlItem } from '@/components/ui/segmented-control'
 
 const meta = {
   title: 'Components/SegmentedControl',
-  component: ToggleGroup,
-  parameters: { docs: { description: { component: 'Compact single-choice control for settings such as Theme and Grid size (shadcn `ToggleGroup`). A `bg-elevation` pill; the selected item inverts.' } } },
-} satisfies Meta<typeof ToggleGroup>
+  component: SegmentedControl,
+  parameters: { docs: { description: { component: 'Compact single-choice control for settings such as Theme and Grid size. A `bg-muted` pill; one inverted indicator measures and slides/resizes to the selected item. Built on Radix `ToggleGroup`, but the active item cannot be deselected.' } } },
+} satisfies Meta<typeof SegmentedControl>
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Overview: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <ToggleGroup type="single" defaultValue="light" aria-label="Theme">
-        <ToggleGroupItem value="light" aria-label="Light"><SunIcon /></ToggleGroupItem>
-        <ToggleGroupItem value="dark" aria-label="Dark"><MoonIcon /></ToggleGroupItem>
-        <ToggleGroupItem value="system" aria-label="System"><ContrastIcon /></ToggleGroupItem>
-      </ToggleGroup>
-      <ToggleGroup type="single" defaultValue="II" aria-label="Grid size">
-        {['I', 'II', 'III'].map((v) => <ToggleGroupItem key={v} value={v}>{v}</ToggleGroupItem>)}
-      </ToggleGroup>
+      <SegmentedControl defaultValue="light" aria-label="Theme">
+        <SegmentedControlItem value="light" aria-label="Light"><SunIcon /></SegmentedControlItem>
+        <SegmentedControlItem value="dark" aria-label="Dark"><MoonIcon /></SegmentedControlItem>
+        <SegmentedControlItem value="system" aria-label="System"><ContrastIcon /></SegmentedControlItem>
+      </SegmentedControl>
+      <SegmentedControl defaultValue="II" aria-label="Grid size">
+        {['I', 'II', 'III'].map((v) => <SegmentedControlItem key={v} value={v}>{v}</SegmentedControlItem>)}
+      </SegmentedControl>
     </div>
   ),
 }

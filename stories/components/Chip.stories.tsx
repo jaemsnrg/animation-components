@@ -20,3 +20,7 @@ export const Overview: Story = {
     </div>
   ),
 }
+
+export const Glass: Story = {
+  render: () => <Chip glass><ChipLabel className="pl-1">Typography</ChipLabel></Chip>,
+}

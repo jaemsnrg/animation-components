@@ -80,6 +80,8 @@
 .cx-chip__remove { display: inline-flex; color: var(--text-tertiary); }
 .cx-chip--selected { background: var(--bg-inverted); color: var(--text-inverted); border-color: transparent; }
 .cx-chip--selected:hover { background: var(--hover-primary); }
+.cx-chip--glass { background: rgb(255 255 255 / 0.25); color: #fff; border-color: transparent; backdrop-filter: blur(12px) saturate(1.5); }
+.cx-chip--glass:hover { background: rgb(255 255 255 / 0.35); }
 
 /* ---------- ImageCaption (title + frosted credit over an image) ---------- */
 .cx-imgcap {
