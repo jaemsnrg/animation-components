@@ -1,0 +1,23 @@
+{
+  "name": "cosmos-study",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "tokens:check": "tz check",
+    "tokens:build": "node scripts/build-tokens.mjs",
+    "storybook": "npm run tokens:build && storybook dev -p 6006",
+    "build-storybook": "npm run tokens:build && storybook build"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^10.6.0",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/html-vite": "^10.6.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@terrazzo/cli": "^2.7.1",
+    "storybook": "^10.6.0",
+    "style-dictionary": "^5.5.5",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.1"
+  }
+}

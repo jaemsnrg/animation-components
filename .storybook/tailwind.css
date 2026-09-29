@@ -1,0 +1,6 @@
+/* Tailwind without preflight: component CSS in components/bundle.css is authored against the browser defaults.
+   Theme comes from the generated dist/tailwind.theme.css. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "../dist/tailwind.theme.css";
