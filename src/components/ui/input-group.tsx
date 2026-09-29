@@ -5,15 +5,20 @@ import { Button } from "./button"
 
 /**
  * Search-field shell: 56px pill, hairline, soft inset bevel, `shadow-small` that lifts to
- * `shadow-large` when the control inside is focused.
+ * `shadow-large` when the control inside is focused. `variant="simple"` is a flat fill with no
+ * border or shadow, and nothing changes on focus.
  */
-function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
+function InputGroup({ className, variant = "default", ...props }: React.ComponentProps<"div"> & { variant?: "default" | "simple" }) {
   return (
     <div
       data-slot="input-group"
+      data-variant={variant}
       role="group"
       className={cn(
-        "group/input-group flex h-14 w-full min-w-0 items-center gap-2 rounded-full border-[0.5px] border-input bg-bg-light-elevation p-2 transition-shadow duration-slow ease-out-quint [box-shadow:var(--shadow-small),var(--shadow-field-inset)] has-[[data-slot=input-group-control]:focus-visible]:[box-shadow:var(--shadow-large),var(--shadow-field-inset)]",
+        "group/input-group flex h-14 w-full min-w-0 items-center gap-2 rounded-full bg-bg-light-elevation p-2",
+        variant === "simple"
+          ? "border-0"
+          : "border-[0.5px] border-input transition-shadow duration-slow ease-out-quint [box-shadow:var(--shadow-small),var(--shadow-field-inset)] has-[[data-slot=input-group-control]:focus-visible]:[box-shadow:var(--shadow-large),var(--shadow-field-inset)]",
         className
       )}
       {...props}

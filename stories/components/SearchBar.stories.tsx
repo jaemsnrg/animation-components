@@ -17,6 +17,7 @@ export const Overview: Story = {
     <div className="flex flex-col gap-4">
       <SearchBar placeholder="Search profile…" scope={<Chip asChild><span><Avatar size="xs"><AvatarFallback>LW</AvatarFallback></Avatar><ChipLabel>lucasworcel</ChipLabel></span></Chip>} />
       <SearchBar placeholder="Search Cosmos…" />
+      <SearchBar variant="simple" placeholder="Search" />
     </div>
   ),
 }
