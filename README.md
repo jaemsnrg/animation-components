@@ -56,3 +56,19 @@ This system is a study of the public visual language of cosmos.so, measured from
 ## Components
 
 Styles live in `components/bundle.css`, prefixed `cx-`; wrap a region in `.cx` to get the font, colour and focus ring. Button, IconButton, SearchBar, Input, Chip, Tabs, CountBadge, Avatar, CollectionCard, ElementCard and Header each have a live preview and a guideline page.
+
+## Using in another project
+
+Clone this repo into the consuming project (e.g. `git clone <url> design-system`, or as a submodule). There is no versioning: pull to update.
+
+1. Install the peer deps in the consumer: `tailwindcss` (v4), `tw-animate-css`, `radix-ui`, `class-variance-authority`, `clsx`, `tailwind-merge`, `lucide-react`.
+2. In the consumer's global CSS, after Tailwind (and load Geist yourself, see `src/styles/globals.css`):
+   ```css
+   @import "tailwindcss";
+   @import "./design-system/src/styles/theme.css";
+   ```
+   `theme.css` pulls in `dist/tokens.css`, the Tailwind theme, the shadcn variable bindings, and points Tailwind at the component source.
+3. Import components by path: `import { Button } from "./design-system/src/components/ui/button"`. Components use relative imports internally, so no `@/` alias is needed. The consumer's bundler must compile TSX outside its own `src` (Vite does by default).
+4. Dark mode: set `data-theme="dark"` on `<html>`, or rely on the OS setting.
+
+Edit tokens in `tokens.json` here, run `npm run tokens:build`, and commit `dist/` so consumers get the output without building.

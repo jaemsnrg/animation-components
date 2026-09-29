@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 /** Sticky top bar: logo + menu (start), search (centre), account actions (end). 92px tall, on the page ground. */
 function Header({ start, center, end, className, ...props }: Omit<React.ComponentProps<"header">, "children"> & { start?: React.ReactNode; center?: React.ReactNode; end?: React.ReactNode }) {

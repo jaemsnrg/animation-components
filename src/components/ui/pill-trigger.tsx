@@ -1,7 +1,7 @@
 import * as React from "react"
 import { ChevronDownIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 /**
  * Pill trigger for a menu (e.g. the destination picker). 56px, `heading` label, trailing chevron

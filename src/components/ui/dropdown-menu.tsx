@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui"
 
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 const DropdownMenu = (props: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) => (
   <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />

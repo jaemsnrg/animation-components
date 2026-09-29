@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { XIcon } from "lucide-react"
 import { Slot } from "radix-ui"
 
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 /** Context pill: 40px, hairline border. Selected inverts. Label truncates at 12 characters. */
 const chipVariants = cva(

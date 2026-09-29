@@ -1,7 +1,7 @@
 import * as React from "react"
 import { ToggleGroup as ToggleGroupPrimitive } from "radix-ui"
 
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 /**
  * Segmented control for short settings (Theme, Grid size). `bg-elevation` pill; the selected item inverts.

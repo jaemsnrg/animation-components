@@ -1,7 +1,7 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
-import { Card } from "@/components/ui/card"
+import { cn } from "../../lib/utils"
+import { Card } from "./card"
 
 /** Square tile (radius-3xl, shadow-medium) with title and meta beneath. Media zooms 5% on hover. */
 function CollectionCard({ title, meta, children, className, ...props }: Omit<React.ComponentProps<"a">, "title"> & { title: React.ReactNode; meta?: React.ReactNode }) {

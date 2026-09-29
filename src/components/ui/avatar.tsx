@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Avatar as AvatarPrimitive } from "radix-ui"
 
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 /** Circular profile image with a 0.5px outline so pale photos keep an edge. Sizes: xs 24, sm 32, default 40, lg 80. */
 function Avatar({

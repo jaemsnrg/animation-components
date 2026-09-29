@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 /** Avatar as a button (account menu trigger). 2px ring: transparent, `border-hover` on hover, `border-active` when open or pressed. */
 function AvatarButton({ className, ...props }: React.ComponentProps<"button">) {

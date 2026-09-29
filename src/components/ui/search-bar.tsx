@@ -1,8 +1,8 @@
 import * as React from "react"
 import { ScanIcon, SearchIcon } from "lucide-react"
 
-import { cn } from "@/lib/utils"
-import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "@/components/ui/input-group"
+import { cn } from "../../lib/utils"
+import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from "./input-group"
 
 /** Header search: optional scope chip (or search icon) leading, visual-search action trailing. */
 function SearchBar({ scope, placeholder = "Search…", className, ...props }: React.ComponentProps<"input"> & { scope?: React.ReactNode }) {

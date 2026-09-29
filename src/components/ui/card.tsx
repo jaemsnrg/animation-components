@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 /** Surface with a hairline and `shadow-medium`. Collection cards use `radius-3xl`; element tiles pass `rounded-2xl shadow-none`. */
 function Card({ className, ...props }: React.ComponentProps<"div">) {
