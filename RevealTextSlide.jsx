@@ -1,15 +1,16 @@
-// Original slide-up (clip-masked) reveal. Kept for hero/splash intros; the default
-// RevealText/RevealWords are the lighter CSS fade versions.
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { cn } from '../lib/utils';
+import { useRevealTrigger, toCssEasing } from './useRevealTrigger';
+import './reveal-slide.css';
 
+// Original slide-up (clip-masked) reveal, now driven by CSS keyframes. Used for hero/splash
+// intros; the default RevealText is the fade version. Each character keeps its own static
+// clip-path (see feedback: overflow:hidden cuts glyph overhang).
 export const RevealTextSlide = ({
   text,
-  mode = 'stagger',
   duration = 0.8,
   delay = 0,
   stagger = 0.02,
@@ -18,60 +19,34 @@ export const RevealTextSlide = ({
   nowrap = false,
   className
 }) => {
+  const [ref, playing] = useRevealTrigger(inView);
   const characters = text.split('');
 
-  const container = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: stagger,
-        delayChildren: delay,
-      },
-    },
-  };
-
-  const child = {
-    visible: {
-      y: 0,
-      transition: {
-        duration: duration,
-        ease: easing
-      },
-    },
-    hidden: {
-      y: "110%", // Slightly more than 100% to ensure descenders are cleared
-      transition: {
-        duration: duration,
-        ease: easing
-      },
-    },
-  };
-
   return (
-    <motion.div
-      className={cn("flex", nowrap ? "flex-nowrap" : "flex-wrap", className)}
-      variants={container}
-      initial="hidden"
-      {...(inView ? { whileInView: "visible", viewport: { once: true } } : { animate: "visible" })}
+    <div
+      ref={ref}
+      className={cn('reveal-slide flex', nowrap ? 'flex-nowrap' : 'flex-wrap', playing && 'is-playing', className)}
+      style={{
+        '--reveal-duration': `${duration}s`,
+        '--reveal-delay': `${delay}s`,
+        '--reveal-stagger': `${stagger}s`,
+        '--reveal-ease': toCssEasing(easing),
+      }}
     >
       <span className="sr-only">{text}</span>
       {characters.map((char, index) => (
-        <span key={index} aria-hidden="true" style={{ clipPath: "inset(0 -0.15em -0.18em)", display: "inline-block" }}>
-          <motion.span
-            variants={child}
-            style={{ display: "inline-block" }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
+        <span key={index} aria-hidden="true" className="reveal-unit-clip" style={{ clipPath: 'inset(0 -0.15em -0.18em)' }}>
+          <span className="reveal-unit" style={{ '--i': index }}>
+            {char === ' ' ? '\u00A0' : char}
+          </span>
         </span>
       ))}
-    </motion.div>
+    </div>
   );
 };
 
 RevealTextSlide.propTypes = {
   text: PropTypes.string.isRequired,
-  mode: PropTypes.oneOf(['stagger']),
   duration: PropTypes.number,
   delay: PropTypes.number,
   stagger: PropTypes.number,
@@ -83,4 +58,3 @@ RevealTextSlide.propTypes = {
   nowrap: PropTypes.bool,
   className: PropTypes.string,
 };
-

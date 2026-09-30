@@ -54,61 +54,68 @@ export const ImageBoxView = ({
   const { scrollYProgress: scrollProgress } = useScroll({ target: containerRef, offset: ['start end', 'end start'] });
   const imageY = useTransform(scrollProgress, [0, 1], [-effectiveParallax, effectiveParallax]);
 
-  // ── Natural-size mode: clipPath reveal + parallax ─────────────────────────
+  // ── Natural-size mode: bottom-up wipe + parallax ──────────────────────────
+  // Nested translates instead of animating clip-path (which repaints every frame): an
+  // overflow-hidden window starts pushed down by 55% of its height while its content is
+  // pulled up by the same amount, so only the bottom 45% shows; both ease to 0 on the same
+  // CSS transition, growing the visible area upward. Compositor-only.
   if (naturalSize) {
     const r = `${borderRadius}px`;
+    const ease = `cubic-bezier(${EASE.join(',')})`;
+    const t = `transform ${duration}s ${ease} ${delay}s`;
     return (
       <div ref={containerRef} style={{ width }}>
-        <motion.div
+        <div
           ref={boxRef}
-          animate={{
-            clipPath: inView
-              ? `inset(0% 0% 0% 0% round ${r})`
-              : `inset(55% 0% 0% 0% round ${r})`,
-            y: inView ? 0 : 28,
-          }}
-          transition={{ duration, ease: EASE, delay }}
-          style={{ width, display: 'grid', overflow: 'hidden' }}
+          style={{ width, transform: inView ? 'none' : 'translate3d(0,28px,0)', transition: t, willChange: inView ? undefined : 'transform' }}
         >
-          {/* Blur placeholder — in normal flow so it holds the container height */}
-          {blurSrc && (
-            <motion.img
-              src={blurSrc}
-              aria-hidden
-              initial={{ opacity: 1 }}
-              animate={{ opacity: isLoaded ? 0 : 1 }}
-              transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
-              style={{
-                gridArea: '1/1',
-                width: '100%',
-                height: 'auto',
-                display: 'block',
-                filter: 'blur(40px)',
-                transform: 'scale(1.15)',
-                imageRendering: 'pixelated',
-              }}
-            />
-          )}
-          {/* Real image */}
-          <motion.img
-            ref={imgRef}
-            src={src}
-            alt={alt}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isLoaded ? 1 : 0 }}
-            transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
-            onLoad={() => setIsLoaded(true)}
-            style={{
-              gridArea: '1/1',
-              width: '100%',
-              height: 'auto',
-              display: 'block',
-              borderRadius: r,
-              y: imageY,
-              willChange: 'transform',
-            }}
-          />
-        </motion.div>
+          <div
+            style={{ overflow: 'hidden', borderRadius: r, transform: inView ? 'none' : 'translate3d(0,55%,0)', transition: t, willChange: inView ? undefined : 'transform' }}
+          >
+            <div
+              style={{ display: 'grid', transform: inView ? 'none' : 'translate3d(0,-55%,0)', transition: t, willChange: inView ? undefined : 'transform' }}
+            >
+              {/* Blur placeholder — in normal flow so it holds the container height */}
+              {blurSrc && (
+                <motion.img
+                  src={blurSrc}
+                  aria-hidden
+                  initial={{ opacity: 1 }}
+                  animate={{ opacity: isLoaded ? 0 : 1 }}
+                  transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
+                  style={{
+                    gridArea: '1/1',
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    filter: 'blur(40px)',
+                    transform: 'scale(1.15)',
+                    imageRendering: 'pixelated',
+                  }}
+                />
+              )}
+              {/* Real image */}
+              <motion.img
+                ref={imgRef}
+                src={src}
+                alt={alt}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isLoaded ? 1 : 0 }}
+                transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
+                onLoad={() => setIsLoaded(true)}
+                style={{
+                  gridArea: '1/1',
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block',
+                  borderRadius: r,
+                  y: imageY,
+                  willChange: 'transform',
+                }}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

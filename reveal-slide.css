@@ -1,0 +1,33 @@
+/* Slide-up (clip-masked) text reveal. Each unit keeps a static clip-path so the glyph
+   overhang isn't cut, and slides up with a CSS transform keyframe (compositor-driven,
+   no per-character JS animation). Started by adding `.is-playing`. */
+.reveal-slide .reveal-unit-clip {
+    display: inline-block;
+}
+
+.reveal-slide .reveal-unit {
+    display: inline-block;
+    transform: translateY(110%);
+}
+
+.reveal-slide.is-playing .reveal-unit {
+    animation: reveal-slide-in var(--reveal-duration, 0.8s) var(--reveal-ease, cubic-bezier(0.16, 1, 0.3, 1))
+        calc(var(--reveal-delay, 0s) + var(--i, 0) * var(--reveal-stagger, 0.02s)) both;
+}
+
+@keyframes reveal-slide-in {
+    from {
+        transform: translateY(110%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-slide .reveal-unit {
+        transform: none;
+        animation: none !important;
+    }
+}
