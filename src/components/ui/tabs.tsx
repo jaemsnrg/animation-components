@@ -63,7 +63,7 @@ function TabsList({ className, children, ...props }: React.ComponentProps<typeof
         ref={indicatorRef}
         aria-hidden
         data-slot="tabs-indicator"
-        className="pointer-events-none absolute top-0 left-0 rounded-full bg-muted opacity-0 data-[ready=true]:transition-[transform,width,height] data-[ready=true]:duration-slow data-[ready=true]:ease-out motion-reduce:transition-none"
+        className="pointer-events-none absolute top-0 left-0 rounded-full bg-muted opacity-0 data-[ready=true]:transition-[transform,width,height] data-[ready=true]:duration-slow data-[ready=true]:ease-out-quint motion-reduce:transition-none"
       />
       {children}
     </TabsPrimitive.List>

@@ -74,7 +74,7 @@ function SegmentedControl({ className, children, value, defaultValue, onValueCha
         ref={indicatorRef}
         aria-hidden
         data-slot="segmented-control-indicator"
-        className="pointer-events-none absolute top-0 left-0 rounded-full bg-bg-inverted opacity-0 data-[ready=true]:transition-[transform,width,height] data-[ready=true]:duration-slow data-[ready=true]:ease-out motion-reduce:transition-none"
+        className="pointer-events-none absolute top-0 left-0 rounded-full bg-bg-inverted opacity-0 data-[ready=true]:transition-[transform,width,height] data-[ready=true]:duration-slow data-[ready=true]:ease-out-quint motion-reduce:transition-none"
       />
       {children}
     </ToggleGroupPrimitive.Root>
