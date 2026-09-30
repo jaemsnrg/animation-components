@@ -1,58 +1,42 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { cn } from '../lib/utils';
+import { useRevealTrigger, toCssEasing, FADE_DURATION_SCALE, FADE_EASING } from './useRevealTrigger';
+import './reveal-fade.css';
 
+// Per-word fade reveal, driven by CSS keyframes.
 export const RevealWords = ({
   text,
   duration = 0.7,
   delay = 0,
   stagger = 0.05,
-  easing = [0.16, 1, 0.3, 1],
+  easing = FADE_EASING,
   inView = false,
   className,
 }) => {
+  const [ref, playing] = useRevealTrigger(inView);
   const words = text.split(' ');
 
-  const container = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: stagger,
-        delayChildren: delay,
-      },
-    },
-  };
-
-  const child = {
-    hidden: { y: '110%' },
-    visible: {
-      y: 0,
-      transition: {
-        duration,
-        ease: easing,
-      },
-    },
-  };
-
   return (
-    <motion.div
-      className={cn('flex flex-wrap', className)}
-      variants={container}
-      initial="hidden"
-      {...(inView ? { whileInView: "visible", viewport: { once: true } } : { animate: "visible" })}
+    <div
+      ref={ref}
+      className={cn('reveal-fade flex flex-wrap', playing && 'is-playing', className)}
+      style={{
+        '--reveal-duration': `${duration * FADE_DURATION_SCALE}s`,
+        '--reveal-delay': `${delay}s`,
+        '--reveal-stagger': `${stagger}s`,
+        '--reveal-ease': toCssEasing(easing),
+      }}
     >
       <span className="sr-only">{text}</span>
       {words.map((word, index) => (
-        <span key={index} aria-hidden="true" style={{ clipPath: 'inset(0 -0.15em)', display: 'inline-block', marginRight: '0.25em' }}>
-          <motion.span variants={child} style={{ display: 'inline-block' }}>
-            {word}
-          </motion.span>
+        <span key={index} aria-hidden="true" className="reveal-unit" style={{ '--i': index, marginRight: '0.25em' }}>
+          {word}
         </span>
       ))}
-    </motion.div>
+    </div>
   );
 };
 
@@ -65,5 +49,6 @@ RevealWords.propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.number),
   ]),
+  inView: PropTypes.bool,
   className: PropTypes.string,
 };
