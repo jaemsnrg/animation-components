@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import MuxPlayer from '@mux/mux-player-react';
+import { useMuxPlayer } from './useMuxPlayer';
 import PropTypes from 'prop-types';
 
 const EASE = [0.25, 0.1, 0.25, 1];
@@ -17,6 +17,7 @@ export function VideoRevealPlayer({
   borderRadius = 12,
 }) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const MuxPlayer = useMuxPlayer(Boolean(playbackId));
 
   if (!playbackId) return null;
 
@@ -40,7 +41,7 @@ export function VideoRevealPlayer({
         transition={{ duration, ease: EASE }}
         style={{ gridArea: '1/1', width: '100%', overflow: 'hidden', fontSize: 0, lineHeight: 0 }}
       >
-        <MuxPlayer
+        {MuxPlayer && <MuxPlayer
           playbackId={playbackId}
           metadata={{ video_title: alt }}
           streamType="on-demand"
@@ -52,7 +53,7 @@ export function VideoRevealPlayer({
           poster={thumbnailSrc}
           onPlaying={() => setIsLoaded(true)}
           style={{ '--controls': 'none', '--media-border-radius': '0px', '--media-object-fit': 'cover', width: '100%', display: 'block' }}
-        />
+        />}
       </motion.div>
     </div>
   );

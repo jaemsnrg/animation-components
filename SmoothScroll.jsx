@@ -66,22 +66,26 @@ export const SmoothScroll = ({ children, options = {} }) => {
     setLenisEnabled(!isMobile() && !isSafari());
   }, []);
 
-  if (!lenisEnabled) {
-    return <>{children}</>;
-  }
-
+  // Lenis is mounted as a sibling (root mode needs no wrapper) so `children` keeps
+  // the same position in the tree. Swapping <>{children}</> for <ReactLenis> after
+  // hydration used to unmount and remount the entire page.
   return (
-    <ReactLenis root options={{
-      lerp: 0.1,
-      duration: 1.5,
-      smoothWheel: true,
-      syncTouch: true,
-      touchMultiplier: 1.75,
-      ...options
-    }}>
-      <LenisLinkStopper />
+    <>
+      {lenisEnabled && (
+        <>
+          <ReactLenis root options={{
+            lerp: 0.1,
+            duration: 1.5,
+            smoothWheel: true,
+            syncTouch: true,
+            touchMultiplier: 1.75,
+            ...options
+          }} />
+          <LenisLinkStopper />
+        </>
+      )}
       {children}
-    </ReactLenis>
+    </>
   );
 };
 

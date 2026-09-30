@@ -36,6 +36,15 @@ function parseSvgData(text) {
   return { viewBox, paths };
 }
 
+// Fetch + parse each SVG once per page load; the carousel remounts this on every slide.
+const svgCache = new Map();
+function loadSvg(src) {
+  if (!svgCache.has(src)) {
+    svgCache.set(src, fetch(src).then((r) => r.text()).then(parseSvgData).catch(() => null));
+  }
+  return svgCache.get(src);
+}
+
 export function SVGDrawReveal({
   src,
   color,
@@ -56,9 +65,9 @@ export function SVGDrawReveal({
   const shouldShow = isActive === false ? false : isInView;
 
   useEffect(() => {
-    fetch(src)
-      .then((r) => r.text())
-      .then((text) => setSvgData(parseSvgData(text)));
+    let cancelled = false;
+    loadSvg(src).then((data) => { if (!cancelled) setSvgData(data); });
+    return () => { cancelled = true; };
   }, [src]);
 
   const wrapperVariants = {
