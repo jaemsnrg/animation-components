@@ -86,7 +86,7 @@ function SegmentedControlItem({ className, ...props }: React.ComponentProps<type
     <ToggleGroupPrimitive.Item
       data-slot="segmented-control-item"
       className={cn(
-        "relative z-10 inline-flex h-10 min-w-10 items-center justify-center rounded-full px-3 text-body-regular font-medium! leading-none text-muted-foreground transition-colors duration-fast outline-none hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 data-[state=on]:text-text-inverted data-[state=on]:hover:text-text-inverted [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-5",
+        "relative z-10 inline-flex cursor-pointer h-10 min-w-10 items-center justify-center rounded-full px-3 text-body-regular font-medium! leading-none text-muted-foreground transition-colors duration-fast outline-none hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 data-[state=on]:text-text-inverted data-[state=on]:hover:text-text-inverted [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-5",
         className
       )}
       {...props}
