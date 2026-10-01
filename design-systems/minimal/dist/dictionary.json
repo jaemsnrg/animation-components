@@ -1,0 +1,2195 @@
+[
+  {
+    "path": "color.gray.0",
+    "type": "color",
+    "cssVar": "--gray-0",
+    "cssClass": null,
+    "themed": false,
+    "light": "#ffffff",
+    "dark": "#ffffff",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-0",
+      "text-gray-0",
+      "border-gray-0"
+    ],
+    "description": "Pure white. Light page ground, cards, floating surfaces; dark-theme primary button fill."
+  },
+  {
+    "path": "color.gray.50",
+    "type": "color",
+    "cssVar": "--gray-50",
+    "cssClass": null,
+    "themed": false,
+    "light": "#fcfbfa",
+    "dark": "#fcfbfa",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-50",
+      "text-gray-50",
+      "border-gray-50"
+    ],
+    "description": "Warm off-white. Light-theme search field and input fill (bg-light-elevation)."
+  },
+  {
+    "path": "color.gray.100",
+    "type": "color",
+    "cssVar": "--gray-100",
+    "cssClass": null,
+    "themed": false,
+    "light": "#f2f1f0",
+    "dark": "#f2f1f0",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-100",
+      "text-gray-100",
+      "border-gray-100"
+    ],
+    "description": "Warm light grey. Light-theme secondary button, active tab indicator, count badges (bg-elevation)."
+  },
+  {
+    "path": "color.gray.200",
+    "type": "color",
+    "cssVar": "--gray-200",
+    "cssClass": null,
+    "themed": false,
+    "light": "#dedede",
+    "dark": "#dedede",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-200",
+      "text-gray-200",
+      "border-gray-200"
+    ],
+    "description": "Neutral light grey. Dark-theme neutral background; image placeholders."
+  },
+  {
+    "path": "color.gray.300",
+    "type": "color",
+    "cssVar": "--gray-300",
+    "cssClass": null,
+    "themed": false,
+    "light": "#d0cdcd",
+    "dark": "#d0cdcd",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-300",
+      "text-gray-300",
+      "border-gray-300"
+    ],
+    "description": "Light-theme disabled and quaternary text. Decorative only: 1.5:1 on white."
+  },
+  {
+    "path": "color.gray.400",
+    "type": "color",
+    "cssVar": "--gray-400",
+    "cssClass": null,
+    "themed": false,
+    "light": "#adadad",
+    "dark": "#adadad",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-400",
+      "text-gray-400",
+      "border-gray-400"
+    ],
+    "description": "Mid grey. Rarely used; icons on dark media."
+  },
+  {
+    "path": "color.gray.500",
+    "type": "color",
+    "cssVar": "--gray-500",
+    "cssClass": null,
+    "themed": false,
+    "light": "#919191",
+    "dark": "#919191",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-500",
+      "text-gray-500",
+      "border-gray-500"
+    ],
+    "description": "Light-theme neutral background (bg-neutral)."
+  },
+  {
+    "path": "color.gray.600",
+    "type": "color",
+    "cssVar": "--gray-600",
+    "cssClass": null,
+    "themed": false,
+    "light": "#757575",
+    "dark": "#757575",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-600",
+      "text-gray-600",
+      "border-gray-600"
+    ],
+    "description": "Mid-dark grey. Reserved; not bound to a semantic role."
+  },
+  {
+    "path": "color.gray.700",
+    "type": "color",
+    "cssVar": "--gray-700",
+    "cssClass": null,
+    "themed": false,
+    "light": "#5a5a5a",
+    "dark": "#5a5a5a",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-700",
+      "text-gray-700",
+      "border-gray-700"
+    ],
+    "description": "Dark-theme floating button fill."
+  },
+  {
+    "path": "color.gray.800",
+    "type": "color",
+    "cssVar": "--gray-800",
+    "cssClass": null,
+    "themed": false,
+    "light": "#434242",
+    "dark": "#434242",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-800",
+      "text-gray-800",
+      "border-gray-800"
+    ],
+    "description": "Dark-theme quaternary text; image overlay scrim base."
+  },
+  {
+    "path": "color.gray.850",
+    "type": "color",
+    "cssVar": "--gray-850",
+    "cssClass": null,
+    "themed": false,
+    "light": "#242424",
+    "dark": "#242424",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-850",
+      "text-gray-850",
+      "border-gray-850"
+    ],
+    "description": "Dark-theme toast background."
+  },
+  {
+    "path": "color.gray.900",
+    "type": "color",
+    "cssVar": "--gray-900",
+    "cssClass": null,
+    "themed": false,
+    "light": "#323131",
+    "dark": "#323131",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-900",
+      "text-gray-900",
+      "border-gray-900"
+    ],
+    "description": "Dark-theme elevation, cells and secondary button fill."
+  },
+  {
+    "path": "color.gray.950",
+    "type": "color",
+    "cssVar": "--gray-950",
+    "cssClass": null,
+    "themed": false,
+    "light": "#212020",
+    "dark": "#212020",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-950",
+      "text-gray-950",
+      "border-gray-950"
+    ],
+    "description": "Dark-theme cards and floating surfaces."
+  },
+  {
+    "path": "color.gray.975",
+    "type": "color",
+    "cssVar": "--gray-975",
+    "cssClass": null,
+    "themed": false,
+    "light": "#141414",
+    "dark": "#141414",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-975",
+      "text-gray-975",
+      "border-gray-975"
+    ],
+    "description": "Dark-theme page ground and paper."
+  },
+  {
+    "path": "color.gray.1000",
+    "type": "color",
+    "cssVar": "--gray-1000",
+    "cssClass": null,
+    "themed": false,
+    "light": "#0d0d0d",
+    "dark": "#0d0d0d",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-gray-1000",
+      "text-gray-1000",
+      "border-gray-1000"
+    ],
+    "description": "Near-black ink. Light-theme text, primary button, active borders; dark-theme text-inverted."
+  },
+  {
+    "path": "color.paper",
+    "type": "color",
+    "cssVar": "--paper",
+    "cssClass": null,
+    "themed": false,
+    "light": "#f7f5f3",
+    "dark": "#f7f5f3",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-paper",
+      "text-paper",
+      "border-paper"
+    ],
+    "description": "Warm paper tone. Light-theme bg-paper for editorial/reading surfaces."
+  },
+  {
+    "path": "color.warm-gray-light.400",
+    "type": "color",
+    "cssVar": "--warm-gray-light-400",
+    "cssClass": null,
+    "themed": false,
+    "light": "#9a9796",
+    "dark": "#9a9796",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-warm-gray-light-400",
+      "text-warm-gray-light-400",
+      "border-warm-gray-light-400"
+    ],
+    "description": "Light-theme tertiary text (meta, handles, counts)."
+  },
+  {
+    "path": "color.warm-gray-light.600",
+    "type": "color",
+    "cssVar": "--warm-gray-light-600",
+    "cssClass": null,
+    "themed": false,
+    "light": "#6e6a69",
+    "dark": "#6e6a69",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-warm-gray-light-600",
+      "text-warm-gray-light-600",
+      "border-warm-gray-light-600"
+    ],
+    "description": "Light-theme secondary text."
+  },
+  {
+    "path": "color.warm-gray-dark.400",
+    "type": "color",
+    "cssVar": "--warm-gray-dark-400",
+    "cssClass": null,
+    "themed": false,
+    "light": "#aeabab",
+    "dark": "#aeabab",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-warm-gray-dark-400",
+      "text-warm-gray-dark-400",
+      "border-warm-gray-dark-400"
+    ],
+    "description": "Dark-theme secondary text."
+  },
+  {
+    "path": "color.warm-gray-dark.600",
+    "type": "color",
+    "cssVar": "--warm-gray-dark-600",
+    "cssClass": null,
+    "themed": false,
+    "light": "#918f8f",
+    "dark": "#918f8f",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-warm-gray-dark-600",
+      "text-warm-gray-dark-600",
+      "border-warm-gray-dark-600"
+    ],
+    "description": "Dark-theme tertiary text."
+  },
+  {
+    "path": "color.blue.300",
+    "type": "color",
+    "cssVar": "--blue-300",
+    "cssClass": null,
+    "themed": false,
+    "light": "#2965f6",
+    "dark": "#2965f6",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-blue-300",
+      "text-blue-300",
+      "border-blue-300"
+    ],
+    "description": "Light-theme link text and notification badge."
+  },
+  {
+    "path": "color.blue.400",
+    "type": "color",
+    "cssVar": "--blue-400",
+    "cssClass": null,
+    "themed": false,
+    "light": "#316af4",
+    "dark": "#316af4",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-blue-400",
+      "text-blue-400",
+      "border-blue-400"
+    ],
+    "description": "Dark-theme link text and notification badge."
+  },
+  {
+    "path": "color.blue.500",
+    "type": "color",
+    "cssVar": "--blue-500",
+    "cssClass": null,
+    "themed": false,
+    "light": "#4e3dff",
+    "dark": "#4e3dff",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-blue-500",
+      "text-blue-500",
+      "border-blue-500"
+    ],
+    "description": "Accent violet-blue. Reserved for marketing moments; not bound to a semantic role."
+  },
+  {
+    "path": "color.blue.600",
+    "type": "color",
+    "cssVar": "--blue-600",
+    "cssClass": null,
+    "themed": false,
+    "light": "#0700ff",
+    "dark": "#0700ff",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-blue-600",
+      "text-blue-600",
+      "border-blue-600"
+    ],
+    "description": "Electric blue. Reserved; not bound to a semantic role."
+  },
+  {
+    "path": "color.green.300",
+    "type": "color",
+    "cssVar": "--green-300",
+    "cssClass": null,
+    "themed": false,
+    "light": "#b1d2b9",
+    "dark": "#b1d2b9",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-green-300",
+      "text-green-300",
+      "border-green-300"
+    ],
+    "description": "Soft sage. Success tint backgrounds."
+  },
+  {
+    "path": "color.green.400",
+    "type": "color",
+    "cssVar": "--green-400",
+    "cssClass": null,
+    "themed": false,
+    "light": "#00af5d",
+    "dark": "#00af5d",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-green-400",
+      "text-green-400",
+      "border-green-400"
+    ],
+    "description": "Success text (both themes). 2.9:1 on white, 6.4:1 on gray-975: pair with an icon or word, never colour alone."
+  },
+  {
+    "path": "color.green.500",
+    "type": "color",
+    "cssVar": "--green-500",
+    "cssClass": null,
+    "themed": false,
+    "light": "#2f673c",
+    "dark": "#2f673c",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-green-500",
+      "text-green-500",
+      "border-green-500"
+    ],
+    "description": "Deep green. Success text on green-300 tints."
+  },
+  {
+    "path": "color.green.600",
+    "type": "color",
+    "cssVar": "--green-600",
+    "cssClass": null,
+    "themed": false,
+    "light": "#007a3b",
+    "dark": "#007a3b",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-green-600",
+      "text-green-600",
+      "border-green-600"
+    ],
+    "description": "Darker success green; use for success text on white where green-400 is too light."
+  },
+  {
+    "path": "color.orange.400",
+    "type": "color",
+    "cssVar": "--orange-400",
+    "cssClass": null,
+    "themed": false,
+    "light": "#ef7759",
+    "dark": "#ef7759",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-orange-400",
+      "text-orange-400",
+      "border-orange-400"
+    ],
+    "description": "Dark-theme critical text, border and fill."
+  },
+  {
+    "path": "color.orange.600",
+    "type": "color",
+    "cssVar": "--orange-600",
+    "cssClass": null,
+    "themed": false,
+    "light": "#bd3c1f",
+    "dark": "#bd3c1f",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-orange-600",
+      "text-orange-600",
+      "border-orange-600"
+    ],
+    "description": "Light-theme critical text, border and fill (5.5:1 on white)."
+  },
+  {
+    "path": "color.amber.400",
+    "type": "color",
+    "cssVar": "--amber-400",
+    "cssClass": null,
+    "themed": false,
+    "light": "#cf9200",
+    "dark": "#cf9200",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-amber-400",
+      "text-amber-400",
+      "border-amber-400"
+    ],
+    "description": "Dark-theme warning text, border and fill."
+  },
+  {
+    "path": "color.amber.600",
+    "type": "color",
+    "cssVar": "--amber-600",
+    "cssClass": null,
+    "themed": false,
+    "light": "#956400",
+    "dark": "#956400",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-amber-600",
+      "text-amber-600",
+      "border-amber-600"
+    ],
+    "description": "Light-theme warning text, border and fill."
+  },
+  {
+    "path": "color.bg.primary",
+    "type": "color",
+    "cssVar": "--bg-primary",
+    "cssClass": null,
+    "themed": true,
+    "light": "#ffffff",
+    "dark": "#141414",
+    "aliasOf": "color.gray.0",
+    "aliasOfDark": "color.gray.975",
+    "tailwind": [
+      "bg-bg-primary",
+      "text-bg-primary",
+      "border-bg-primary"
+    ],
+    "description": "Page ground. Everything sits on this."
+  },
+  {
+    "path": "color.bg.paper",
+    "type": "color",
+    "cssVar": "--bg-paper",
+    "cssClass": null,
+    "themed": true,
+    "light": "#f7f5f3",
+    "dark": "#141414",
+    "aliasOf": "color.paper",
+    "aliasOfDark": "color.gray.975",
+    "tailwind": [
+      "bg-bg-paper",
+      "text-bg-paper",
+      "border-bg-paper"
+    ],
+    "description": "Warm reading ground for long-form or editorial pages."
+  },
+  {
+    "path": "color.bg.card",
+    "type": "color",
+    "cssVar": "--bg-card",
+    "cssClass": null,
+    "themed": true,
+    "light": "#ffffff",
+    "dark": "#212020",
+    "aliasOf": "color.gray.0",
+    "aliasOfDark": "color.gray.950",
+    "tailwind": [
+      "bg-bg-card",
+      "text-bg-card",
+      "border-bg-card"
+    ],
+    "description": "Card and tile fill."
+  },
+  {
+    "path": "color.bg.cell",
+    "type": "color",
+    "cssVar": "--bg-cell",
+    "cssClass": null,
+    "themed": true,
+    "light": "#ffffff",
+    "dark": "#323131",
+    "aliasOf": "color.gray.0",
+    "aliasOfDark": "color.gray.900",
+    "tailwind": [
+      "bg-bg-cell",
+      "text-bg-cell",
+      "border-bg-cell"
+    ],
+    "description": "List cells and rows."
+  },
+  {
+    "path": "color.bg.elevation",
+    "type": "color",
+    "cssVar": "--bg-elevation",
+    "cssClass": null,
+    "themed": true,
+    "light": "#f2f1f0",
+    "dark": "#323131",
+    "aliasOf": "color.gray.100",
+    "aliasOfDark": "color.gray.900",
+    "tailwind": [
+      "bg-bg-elevation",
+      "text-bg-elevation",
+      "border-bg-elevation"
+    ],
+    "description": "Raised fills: secondary buttons, active tab indicator, count badges, disabled buttons."
+  },
+  {
+    "path": "color.bg.light-elevation",
+    "type": "color",
+    "cssVar": "--bg-light-elevation",
+    "cssClass": null,
+    "themed": true,
+    "light": "#fcfbfa",
+    "dark": "#212020",
+    "aliasOf": "color.gray.50",
+    "aliasOfDark": "color.gray.950",
+    "tailwind": [
+      "bg-bg-light-elevation",
+      "text-bg-light-elevation",
+      "border-bg-light-elevation"
+    ],
+    "description": "Barely raised fill: the search field and text inputs."
+  },
+  {
+    "path": "color.bg.floating",
+    "type": "color",
+    "cssVar": "--bg-floating",
+    "cssClass": null,
+    "themed": true,
+    "light": "#ffffff",
+    "dark": "#212020",
+    "aliasOf": "color.gray.0",
+    "aliasOfDark": "color.gray.950",
+    "tailwind": [
+      "bg-bg-floating",
+      "text-bg-floating",
+      "border-bg-floating"
+    ],
+    "description": "Menus, popovers and floating panels (with shadow-large)."
+  },
+  {
+    "path": "color.bg.inverted",
+    "type": "color",
+    "cssVar": "--bg-inverted",
+    "cssClass": null,
+    "themed": true,
+    "light": "#0d0d0d",
+    "dark": "#ffffff",
+    "aliasOf": "color.gray.1000",
+    "aliasOfDark": "color.gray.0",
+    "tailwind": [
+      "bg-bg-inverted",
+      "text-bg-inverted",
+      "border-bg-inverted"
+    ],
+    "description": "Inverted surfaces: tooltips, the primary button."
+  },
+  {
+    "path": "color.bg.neutral",
+    "type": "color",
+    "cssVar": "--bg-neutral",
+    "cssClass": null,
+    "themed": true,
+    "light": "#919191",
+    "dark": "#dedede",
+    "aliasOf": "color.gray.500",
+    "aliasOfDark": "color.gray.200",
+    "tailwind": [
+      "bg-bg-neutral",
+      "text-bg-neutral",
+      "border-bg-neutral"
+    ],
+    "description": "Neutral indicator fills (progress tracks, dots)."
+  },
+  {
+    "path": "color.bg.toast",
+    "type": "color",
+    "cssVar": "--bg-toast",
+    "cssClass": null,
+    "themed": true,
+    "light": "#ffffff",
+    "dark": "#242424",
+    "aliasOf": "color.gray.0",
+    "aliasOfDark": "color.gray.850",
+    "tailwind": [
+      "bg-bg-toast",
+      "text-bg-toast",
+      "border-bg-toast"
+    ],
+    "description": "Toast background."
+  },
+  {
+    "path": "color.bg.badge",
+    "type": "color",
+    "cssVar": "--bg-badge",
+    "cssClass": null,
+    "themed": true,
+    "light": "#2965f6",
+    "dark": "#316af4",
+    "aliasOf": "color.blue.300",
+    "aliasOfDark": "color.blue.400",
+    "tailwind": [
+      "bg-bg-badge",
+      "text-bg-badge",
+      "border-bg-badge"
+    ],
+    "description": "Notification dot / unread badge."
+  },
+  {
+    "path": "color.bg.critical",
+    "type": "color",
+    "cssVar": "--bg-critical",
+    "cssClass": null,
+    "themed": true,
+    "light": "#bd3c1f",
+    "dark": "#ef7759",
+    "aliasOf": "color.orange.600",
+    "aliasOfDark": "color.orange.400",
+    "tailwind": [
+      "bg-bg-critical",
+      "text-bg-critical",
+      "border-bg-critical"
+    ],
+    "description": "Destructive fills."
+  },
+  {
+    "path": "color.bg.warning",
+    "type": "color",
+    "cssVar": "--bg-warning",
+    "cssClass": null,
+    "themed": true,
+    "light": "#956400",
+    "dark": "#cf9200",
+    "aliasOf": "color.amber.600",
+    "aliasOfDark": "color.amber.400",
+    "tailwind": [
+      "bg-bg-warning",
+      "text-bg-warning",
+      "border-bg-warning"
+    ],
+    "description": "Warning fills."
+  },
+  {
+    "path": "color.bg.scrim",
+    "type": "color",
+    "cssVar": "--bg-scrim",
+    "cssClass": null,
+    "themed": false,
+    "light": "#0d0d0d",
+    "dark": "#0d0d0d",
+    "aliasOf": "color.gray.1000",
+    "aliasOfDark": "color.gray.1000",
+    "tailwind": [
+      "bg-bg-scrim",
+      "text-bg-scrim",
+      "border-bg-scrim"
+    ],
+    "description": "Modal scrim; apply at reduced opacity."
+  },
+  {
+    "path": "color.text.primary",
+    "type": "color",
+    "cssVar": "--text-primary",
+    "cssClass": null,
+    "themed": true,
+    "light": "#0d0d0d",
+    "dark": "#ffffff",
+    "aliasOf": "color.gray.1000",
+    "aliasOfDark": "color.gray.0",
+    "tailwind": [
+      "bg-text-primary",
+      "text-text-primary",
+      "border-text-primary"
+    ],
+    "description": "Primary text on bg-primary, bg-card, bg-elevation, bg-light-elevation. ~19:1 in both themes."
+  },
+  {
+    "path": "color.text.secondary",
+    "type": "color",
+    "cssVar": "--text-secondary",
+    "cssClass": null,
+    "themed": true,
+    "light": "#6e6a69",
+    "dark": "#aeabab",
+    "aliasOf": "color.warm-gray-light.600",
+    "aliasOfDark": "color.warm-gray-dark.400",
+    "tailwind": [
+      "bg-text-secondary",
+      "text-text-secondary",
+      "border-text-secondary"
+    ],
+    "description": "Secondary text and ghost button labels on bg-primary and bg-card. 5.4:1 light, 8.1:1 dark."
+  },
+  {
+    "path": "color.text.tertiary",
+    "type": "color",
+    "cssVar": "--text-tertiary",
+    "cssClass": null,
+    "themed": true,
+    "light": "#9a9796",
+    "dark": "#918f8f",
+    "aliasOf": "color.warm-gray-light.400",
+    "aliasOfDark": "color.warm-gray-dark.600",
+    "tailwind": [
+      "bg-text-tertiary",
+      "text-text-tertiary",
+      "border-text-tertiary"
+    ],
+    "description": "Meta text: handles, element counts, inactive tabs, placeholders. Source value: 2.9:1 on white and 2.6:1 on bg-elevation in light (fails AA); 5.7:1 in dark. Keep to captions and never for essential information."
+  },
+  {
+    "path": "color.text.quaternary",
+    "type": "color",
+    "cssVar": "--text-quaternary",
+    "cssClass": null,
+    "themed": true,
+    "light": "#d0cdcd",
+    "dark": "#434242",
+    "aliasOf": "color.gray.300",
+    "aliasOfDark": "color.gray.800",
+    "tailwind": [
+      "bg-text-quaternary",
+      "text-text-quaternary",
+      "border-text-quaternary"
+    ],
+    "description": "Decorative text only (dividers, dots). Fails contrast in both themes by design."
+  },
+  {
+    "path": "color.text.disabled",
+    "type": "color",
+    "cssVar": "--text-disabled",
+    "cssClass": null,
+    "themed": true,
+    "light": "#d0cdcd",
+    "dark": "#3a3838",
+    "aliasOf": "color.gray.300",
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-text-disabled",
+      "text-text-disabled",
+      "border-text-disabled"
+    ],
+    "description": "Disabled labels. Exempt from contrast, never used for live content."
+  },
+  {
+    "path": "color.text.inverted",
+    "type": "color",
+    "cssVar": "--text-inverted",
+    "cssClass": null,
+    "themed": true,
+    "light": "#ffffff",
+    "dark": "#0d0d0d",
+    "aliasOf": "color.gray.0",
+    "aliasOfDark": "color.gray.1000",
+    "tailwind": [
+      "bg-text-inverted",
+      "text-text-inverted",
+      "border-text-inverted"
+    ],
+    "description": "Text on bg-inverted and button-primary."
+  },
+  {
+    "path": "color.text.link",
+    "type": "color",
+    "cssVar": "--text-link",
+    "cssClass": null,
+    "themed": true,
+    "light": "#2965f6",
+    "dark": "#316af4",
+    "aliasOf": "color.blue.300",
+    "aliasOfDark": "color.blue.400",
+    "tailwind": [
+      "bg-text-link",
+      "text-text-link",
+      "border-text-link"
+    ],
+    "description": "Inline links on bg-primary. 4.9:1 light; source dark value is 3.9:1 on gray-975 (fails AA for small text), so underline links in dark."
+  },
+  {
+    "path": "color.text.critical",
+    "type": "color",
+    "cssVar": "--text-critical",
+    "cssClass": null,
+    "themed": true,
+    "light": "#bd3c1f",
+    "dark": "#ef7759",
+    "aliasOf": "color.orange.600",
+    "aliasOfDark": "color.orange.400",
+    "tailwind": [
+      "bg-text-critical",
+      "text-text-critical",
+      "border-text-critical"
+    ],
+    "description": "Error text on bg-primary."
+  },
+  {
+    "path": "color.text.warning",
+    "type": "color",
+    "cssVar": "--text-warning",
+    "cssClass": null,
+    "themed": true,
+    "light": "#956400",
+    "dark": "#cf9200",
+    "aliasOf": "color.amber.600",
+    "aliasOfDark": "color.amber.400",
+    "tailwind": [
+      "bg-text-warning",
+      "text-text-warning",
+      "border-text-warning"
+    ],
+    "description": "Warning text on bg-primary."
+  },
+  {
+    "path": "color.text.success",
+    "type": "color",
+    "cssVar": "--text-success",
+    "cssClass": null,
+    "themed": false,
+    "light": "#00af5d",
+    "dark": "#00af5d",
+    "aliasOf": "color.green.400",
+    "aliasOfDark": "color.green.400",
+    "tailwind": [
+      "bg-text-success",
+      "text-text-success",
+      "border-text-success"
+    ],
+    "description": "Success text; always paired with an icon or word."
+  },
+  {
+    "path": "color.text.onmedia",
+    "type": "color",
+    "cssVar": "--text-onmedia",
+    "cssClass": null,
+    "themed": false,
+    "light": "#ffffff",
+    "dark": "#ffffff",
+    "aliasOf": "color.gray.0",
+    "aliasOfDark": "color.gray.0",
+    "tailwind": [
+      "bg-text-onmedia",
+      "text-text-onmedia",
+      "border-text-onmedia"
+    ],
+    "description": "Text over images, on bg-scrim."
+  },
+  {
+    "path": "color.border.primary",
+    "type": "color",
+    "cssVar": "--border-primary",
+    "cssClass": null,
+    "themed": true,
+    "light": "#0d0d0d1f",
+    "dark": "#f7f5f31f",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-border-primary",
+      "text-border-primary",
+      "border-border-primary"
+    ],
+    "description": "Hairline: 0.5px on cards, tabs, search field, chips, outline buttons. Ink at 12%."
+  },
+  {
+    "path": "color.border.hover",
+    "type": "color",
+    "cssVar": "--border-hover",
+    "cssClass": null,
+    "themed": true,
+    "light": "#5c57542e",
+    "dark": "#f8f5f233",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-border-hover",
+      "text-border-hover",
+      "border-border-hover"
+    ],
+    "description": "Hairline on hover for outline buttons and chips."
+  },
+  {
+    "path": "color.border.active",
+    "type": "color",
+    "cssVar": "--border-active",
+    "cssClass": null,
+    "themed": true,
+    "light": "#0d0d0d",
+    "dark": "#ffffff",
+    "aliasOf": "color.gray.1000",
+    "aliasOfDark": "color.gray.0",
+    "tailwind": [
+      "bg-border-active",
+      "text-border-active",
+      "border-border-active"
+    ],
+    "description": "Selected / focused borders and the focus ring. 19:1."
+  },
+  {
+    "path": "color.border.critical",
+    "type": "color",
+    "cssVar": "--border-critical",
+    "cssClass": null,
+    "themed": true,
+    "light": "#bd3c1f",
+    "dark": "#ef7759",
+    "aliasOf": "color.orange.600",
+    "aliasOfDark": "color.orange.400",
+    "tailwind": [
+      "bg-border-critical",
+      "text-border-critical",
+      "border-border-critical"
+    ],
+    "description": "Error borders on inputs."
+  },
+  {
+    "path": "color.border.warning",
+    "type": "color",
+    "cssVar": "--border-warning",
+    "cssClass": null,
+    "themed": true,
+    "light": "#956400",
+    "dark": "#cf9200",
+    "aliasOf": "color.amber.600",
+    "aliasOfDark": "color.amber.400",
+    "tailwind": [
+      "bg-border-warning",
+      "text-border-warning",
+      "border-border-warning"
+    ],
+    "description": "Warning borders."
+  },
+  {
+    "path": "color.button.primary",
+    "type": "color",
+    "cssVar": "--button-primary",
+    "cssClass": null,
+    "themed": true,
+    "light": "#0d0d0d",
+    "dark": "#ffffff",
+    "aliasOf": "color.gray.1000",
+    "aliasOfDark": "color.gray.0",
+    "tailwind": [
+      "bg-button-primary",
+      "text-button-primary",
+      "border-button-primary"
+    ],
+    "description": "Primary button fill (Sign up, Follow). Label text-inverted."
+  },
+  {
+    "path": "color.button.secondary",
+    "type": "color",
+    "cssVar": "--button-secondary",
+    "cssClass": null,
+    "themed": true,
+    "light": "#f2f1f0",
+    "dark": "#323131",
+    "aliasOf": "color.gray.100",
+    "aliasOfDark": "color.gray.900",
+    "tailwind": [
+      "bg-button-secondary",
+      "text-button-secondary",
+      "border-button-secondary"
+    ],
+    "description": "Secondary button fill. Label text-primary."
+  },
+  {
+    "path": "color.button.floating",
+    "type": "color",
+    "cssVar": "--button-floating",
+    "cssClass": null,
+    "themed": true,
+    "light": "#ffffff",
+    "dark": "#5a5a5a",
+    "aliasOf": "color.gray.0",
+    "aliasOfDark": "color.gray.700",
+    "tailwind": [
+      "bg-button-floating",
+      "text-button-floating",
+      "border-button-floating"
+    ],
+    "description": "Buttons floating over media."
+  },
+  {
+    "path": "color.hover.primary",
+    "type": "color",
+    "cssVar": "--hover-primary",
+    "cssClass": null,
+    "themed": true,
+    "light": "#232323",
+    "dark": "#e8e6e4",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-hover-primary",
+      "text-hover-primary",
+      "border-hover-primary"
+    ],
+    "description": "Primary button hover fill."
+  },
+  {
+    "path": "color.hover.secondary",
+    "type": "color",
+    "cssVar": "--hover-secondary",
+    "cssClass": null,
+    "themed": true,
+    "light": "#e8e6e4",
+    "dark": "#3e3d3d",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-hover-secondary",
+      "text-hover-secondary",
+      "border-hover-secondary"
+    ],
+    "description": "Secondary button and plain icon button hover fill."
+  },
+  {
+    "path": "color.hover.tertiary",
+    "type": "color",
+    "cssVar": "--hover-tertiary",
+    "cssClass": null,
+    "themed": true,
+    "light": "#f9f8f8",
+    "dark": "#181818",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "bg-hover-tertiary",
+      "text-hover-tertiary",
+      "border-hover-tertiary"
+    ],
+    "description": "Outline button, chip and row hover fill."
+  },
+  {
+    "path": "font.sans",
+    "type": "fontFamily",
+    "cssVar": "--font-sans",
+    "cssClass": null,
+    "themed": false,
+    "light": "Geist, \"Helvetica Neue\", Arial, sans-serif",
+    "dark": "Geist, \"Helvetica Neue\", Arial, sans-serif",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "font-sans"
+    ],
+    "description": ""
+  },
+  {
+    "path": "font.mono",
+    "type": "fontFamily",
+    "cssVar": "--font-mono",
+    "cssClass": null,
+    "themed": false,
+    "light": "\"Geist Mono\", ui-monospace, Menlo, monospace",
+    "dark": "\"Geist Mono\", ui-monospace, Menlo, monospace",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "font-mono"
+    ],
+    "description": ""
+  },
+  {
+    "path": "type.display-xxlarge",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".display-xxlarge",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-display-xxlarge"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 72,
+        "unit": "px"
+      },
+      "fontWeight": 400,
+      "letterSpacing": {
+        "value": -2.16,
+        "unit": "px"
+      },
+      "lineHeight": 0.8
+    },
+    "sample": "Discover",
+    "group": "Display",
+    "description": "Hero statements on marketing pages only."
+  },
+  {
+    "path": "type.display-large",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".display-large",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-display-large"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 48,
+        "unit": "px"
+      },
+      "fontWeight": 400,
+      "letterSpacing": {
+        "value": -1.44,
+        "unit": "px"
+      },
+      "lineHeight": 1
+    },
+    "sample": "A home for your ideas",
+    "group": "Display",
+    "description": "Landing headlines."
+  },
+  {
+    "path": "type.display",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".display",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-display"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 32,
+        "unit": "px"
+      },
+      "fontWeight": 400,
+      "letterSpacing": {
+        "value": -0.96,
+        "unit": "px"
+      },
+      "lineHeight": 1.1
+    },
+    "sample": "Collections",
+    "group": "Display",
+    "description": "Page titles."
+  },
+  {
+    "path": "type.heading-xxlarge",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".heading-xxlarge",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-heading-xxlarge"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 48,
+        "unit": "px"
+      },
+      "fontWeight": 400,
+      "letterSpacing": {
+        "value": -1.92,
+        "unit": "px"
+      },
+      "lineHeight": 1.1
+    },
+    "sample": "Mœbles",
+    "group": "Heading",
+    "description": "Collection hero title."
+  },
+  {
+    "path": "type.heading-xlarge",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".heading-xlarge",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-heading-xlarge"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 36,
+        "unit": "px"
+      },
+      "fontWeight": 400,
+      "letterSpacing": {
+        "value": -0.36,
+        "unit": "px"
+      },
+      "lineHeight": 1
+    },
+    "sample": "Sevilla",
+    "group": "Heading",
+    "description": "Section hero."
+  },
+  {
+    "path": "type.heading-large",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".heading-large",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-heading-large"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 26,
+        "unit": "px"
+      },
+      "fontWeight": 400,
+      "letterSpacing": {
+        "value": -0.52,
+        "unit": "px"
+      },
+      "lineHeight": 1.15
+    },
+    "sample": "lucasworcel",
+    "group": "Heading",
+    "description": "Profile name, modal titles."
+  },
+  {
+    "path": "type.heading",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".heading",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-heading"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 20,
+        "unit": "px"
+      },
+      "fontWeight": 500,
+      "letterSpacing": {
+        "value": -0.4,
+        "unit": "px"
+      },
+      "lineHeight": 1.15
+    },
+    "sample": "Related elements",
+    "group": "Heading",
+    "description": "Section headings."
+  },
+  {
+    "path": "type.body-large",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".body-large",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-body-large"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 16,
+        "unit": "px"
+      },
+      "fontWeight": 500,
+      "letterSpacing": {
+        "value": -0.32,
+        "unit": "px"
+      },
+      "lineHeight": 1.5
+    },
+    "sample": "Search profile…",
+    "group": "Body",
+    "description": "Search bar and large controls."
+  },
+  {
+    "path": "type.body",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".body",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-body"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 16,
+        "unit": "px"
+      },
+      "fontWeight": 400,
+      "letterSpacing": {
+        "value": -0.32,
+        "unit": "px"
+      },
+      "lineHeight": 1.4
+    },
+    "sample": "Context creator",
+    "group": "Body",
+    "description": "Default body copy, bios, card titles (at 500)."
+  },
+  {
+    "path": "type.body-medium",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".body-medium",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-body-medium"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 15,
+        "unit": "px"
+      },
+      "fontWeight": 500,
+      "letterSpacing": {
+        "value": -0.28125,
+        "unit": "px"
+      },
+      "lineHeight": 1.46666667
+    },
+    "sample": "Sign up",
+    "group": "Body",
+    "description": "Button labels and nav items."
+  },
+  {
+    "path": "type.body-regular",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".body-regular",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-body-regular"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 14,
+        "unit": "px"
+      },
+      "fontWeight": 400,
+      "letterSpacing": {
+        "value": -0.28,
+        "unit": "px"
+      },
+      "lineHeight": 1.43
+    },
+    "sample": "@lucasworcel",
+    "group": "Body",
+    "description": "Handles, links, tab labels (500, leading 14px)."
+  },
+  {
+    "path": "type.body-small",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".body-small",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-body-small"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 14,
+        "unit": "px"
+      },
+      "fontWeight": 400,
+      "letterSpacing": {
+        "value": -0.28,
+        "unit": "px"
+      },
+      "lineHeight": 1.4
+    },
+    "sample": "403 Followers",
+    "group": "Body",
+    "description": "Stats and secondary lines."
+  },
+  {
+    "path": "type.caption",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".caption",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-caption"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 12,
+        "unit": "px"
+      },
+      "fontWeight": 400,
+      "letterSpacing": {
+        "value": -0.24,
+        "unit": "px"
+      },
+      "lineHeight": 1.17
+    },
+    "sample": "99 elements",
+    "group": "Body",
+    "description": "Card meta and timestamps, in text-tertiary."
+  },
+  {
+    "path": "type.numerical",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".numerical",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-numerical"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist",
+        "Helvetica Neue",
+        "Arial",
+        "sans-serif"
+      ],
+      "fontSize": {
+        "value": 10,
+        "unit": "px"
+      },
+      "fontWeight": 500,
+      "letterSpacing": {
+        "value": -0.1,
+        "unit": "px"
+      },
+      "lineHeight": 1.4
+    },
+    "sample": "4.6K",
+    "group": "Body",
+    "description": "Count badges; set with tabular-nums."
+  },
+  {
+    "path": "type.mono",
+    "type": "typography",
+    "cssVar": null,
+    "cssClass": ".mono",
+    "themed": false,
+    "light": null,
+    "dark": null,
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "text-mono"
+    ],
+    "typography": {
+      "fontFamily": [
+        "Geist Mono",
+        "ui-monospace",
+        "Menlo",
+        "monospace"
+      ],
+      "fontSize": {
+        "value": 12,
+        "unit": "px"
+      },
+      "fontWeight": 400,
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      },
+      "lineHeight": 1.4
+    },
+    "sample": "ELEMENT 0142",
+    "group": "Mono",
+    "description": "Metadata labels, file info, technical detail."
+  },
+  {
+    "path": "space.1",
+    "type": "dimension",
+    "cssVar": "--space-1",
+    "cssClass": null,
+    "themed": false,
+    "light": "4px",
+    "dark": "4px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "p-1"
+    ],
+    "description": "Button icon gap, header button group gap, bio line gap."
+  },
+  {
+    "path": "space.2",
+    "type": "dimension",
+    "cssVar": "--space-2",
+    "cssClass": null,
+    "themed": false,
+    "light": "8px",
+    "dark": "8px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "p-2"
+    ],
+    "description": "Search field inner padding and gap; button row gap."
+  },
+  {
+    "path": "space.3",
+    "type": "dimension",
+    "cssVar": "--space-3",
+    "cssClass": null,
+    "themed": false,
+    "light": "12px",
+    "dark": "12px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "p-3"
+    ],
+    "description": "Tab trailing padding; chip trailing padding."
+  },
+  {
+    "path": "space.4",
+    "type": "dimension",
+    "cssVar": "--space-4",
+    "cssClass": null,
+    "themed": false,
+    "light": "16px",
+    "dark": "16px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "p-4"
+    ],
+    "description": "Button vertical padding; bio top margin."
+  },
+  {
+    "path": "space.5",
+    "type": "dimension",
+    "cssVar": "--space-5",
+    "cssClass": null,
+    "themed": false,
+    "light": "20px",
+    "dark": "20px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "p-5"
+    ],
+    "description": "Logo-to-menu gap in the header."
+  },
+  {
+    "path": "space.6",
+    "type": "dimension",
+    "cssVar": "--space-6",
+    "cssClass": null,
+    "themed": false,
+    "light": "24px",
+    "dark": "24px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "p-6"
+    ],
+    "description": "Button horizontal padding; header vertical padding; grid gutter."
+  },
+  {
+    "path": "space.8",
+    "type": "dimension",
+    "cssVar": "--space-8",
+    "cssClass": null,
+    "themed": false,
+    "light": "32px",
+    "dark": "32px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "p-8"
+    ],
+    "description": "Page horizontal padding (layout-padding-horizontal)."
+  },
+  {
+    "path": "space.18",
+    "type": "dimension",
+    "cssVar": "--space-18",
+    "cssClass": null,
+    "themed": false,
+    "light": "72px",
+    "dark": "72px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "p-18"
+    ],
+    "description": "Gap between header zones."
+  },
+  {
+    "path": "space.0-5",
+    "type": "dimension",
+    "cssVar": "--space-0-5",
+    "cssClass": null,
+    "themed": false,
+    "light": "2px",
+    "dark": "2px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "p-0.5"
+    ],
+    "description": "Title-to-meta gap in cards."
+  },
+  {
+    "path": "space.1-5",
+    "type": "dimension",
+    "cssVar": "--space-1-5",
+    "cssClass": null,
+    "themed": false,
+    "light": "6px",
+    "dark": "6px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "p-1.5"
+    ],
+    "description": "Chip inner gap; count badge side padding."
+  },
+  {
+    "path": "space.4-5",
+    "type": "dimension",
+    "cssVar": "--space-4-5",
+    "cssClass": null,
+    "themed": false,
+    "light": "18px",
+    "dark": "18px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "p-4.5"
+    ],
+    "description": "Tab leading padding; avatar-to-name gap."
+  },
+  {
+    "path": "layout.header-height",
+    "type": "dimension",
+    "cssVar": "--layout-header-height",
+    "cssClass": null,
+    "themed": false,
+    "light": "56px",
+    "dark": "56px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "h-layout-header-height",
+      "w-layout-header-height"
+    ],
+    "description": "Height of the header controls and search bar."
+  },
+  {
+    "path": "layout.header-outer-height",
+    "type": "dimension",
+    "cssVar": "--layout-header-outer-height",
+    "cssClass": null,
+    "themed": false,
+    "light": "92px",
+    "dark": "92px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "h-layout-header-outer-height",
+      "w-layout-header-outer-height"
+    ],
+    "description": "Sticky header height including padding."
+  },
+  {
+    "path": "radius.xs",
+    "type": "dimension",
+    "cssVar": "--radius-xs",
+    "cssClass": null,
+    "themed": false,
+    "light": "2px",
+    "dark": "2px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "rounded-xs"
+    ],
+    "description": "Tiny marks."
+  },
+  {
+    "path": "radius.element",
+    "type": "dimension",
+    "cssVar": "--radius-element",
+    "cssClass": null,
+    "themed": false,
+    "light": "3px",
+    "dark": "3px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "rounded-element"
+    ],
+    "description": "Small inline elements, checkboxes."
+  },
+  {
+    "path": "radius.sm",
+    "type": "dimension",
+    "cssVar": "--radius-sm",
+    "cssClass": null,
+    "themed": false,
+    "light": "4px",
+    "dark": "4px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "rounded-sm"
+    ],
+    "description": "Tags inside dense UI."
+  },
+  {
+    "path": "radius.md",
+    "type": "dimension",
+    "cssVar": "--radius-md",
+    "cssClass": null,
+    "themed": false,
+    "light": "6px",
+    "dark": "6px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "rounded-md"
+    ],
+    "description": "Tooltips, small thumbnails."
+  },
+  {
+    "path": "radius.lg",
+    "type": "dimension",
+    "cssVar": "--radius-lg",
+    "cssClass": null,
+    "themed": false,
+    "light": "8px",
+    "dark": "8px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "rounded-lg"
+    ],
+    "description": "Menu items."
+  },
+  {
+    "path": "radius.xl",
+    "type": "dimension",
+    "cssVar": "--radius-xl",
+    "cssClass": null,
+    "themed": false,
+    "light": "12px",
+    "dark": "12px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "rounded-xl"
+    ],
+    "description": "Menus and popovers."
+  },
+  {
+    "path": "radius.2xl",
+    "type": "dimension",
+    "cssVar": "--radius-2xl",
+    "cssClass": null,
+    "themed": false,
+    "light": "16px",
+    "dark": "16px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "rounded-2xl"
+    ],
+    "description": "Element tiles in dense grids, sheets."
+  },
+  {
+    "path": "radius.3xl",
+    "type": "dimension",
+    "cssVar": "--radius-3xl",
+    "cssClass": null,
+    "themed": false,
+    "light": "24px",
+    "dark": "24px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "rounded-3xl"
+    ],
+    "description": "Collection cards and their images."
+  },
+  {
+    "path": "radius.4xl",
+    "type": "dimension",
+    "cssVar": "--radius-4xl",
+    "cssClass": null,
+    "themed": false,
+    "light": "32px",
+    "dark": "32px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "rounded-4xl"
+    ],
+    "description": "Count badges; large modals."
+  },
+  {
+    "path": "radius.full",
+    "type": "dimension",
+    "cssVar": "--radius-full",
+    "cssClass": null,
+    "themed": false,
+    "light": "9999px",
+    "dark": "9999px",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "rounded-full"
+    ],
+    "description": "Every button, chip, tab, the search bar, avatars."
+  },
+  {
+    "path": "shadow.small",
+    "type": "shadow",
+    "cssVar": "--shadow-small",
+    "cssClass": null,
+    "themed": false,
+    "light": "0px 1px 8px 0px #0000000d",
+    "dark": "0px 1px 8px 0px #0000000d",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "shadow-small"
+    ],
+    "description": "Search bar resting shadow; subtle lift."
+  },
+  {
+    "path": "shadow.medium",
+    "type": "shadow",
+    "cssVar": "--shadow-medium",
+    "cssClass": null,
+    "themed": false,
+    "light": "0px 2px 12px 0px #00000005, 0px 4px 16px 0px #0000001a",
+    "dark": "0px 2px 12px 0px #00000005, 0px 4px 16px 0px #0000001a",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "shadow-medium"
+    ],
+    "description": "Collection cards."
+  },
+  {
+    "path": "shadow.large",
+    "type": "shadow",
+    "cssVar": "--shadow-large",
+    "cssClass": null,
+    "themed": false,
+    "light": "0px 6px 44px 0px #00000026, 0px 4px 8px 0px #00000008",
+    "dark": "0px 6px 44px 0px #00000026, 0px 4px 8px 0px #00000008",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "shadow-large"
+    ],
+    "description": "Floating menus, popovers, the dynamic-island toolbar."
+  },
+  {
+    "path": "shadow.xlarge",
+    "type": "shadow",
+    "cssVar": "--shadow-xlarge",
+    "cssClass": null,
+    "themed": false,
+    "light": "0px 1px 8px 0px #00000000, 0px 4px 28px 0px #0000000d",
+    "dark": "0px 1px 8px 0px #00000000, 0px 4px 28px 0px #0000000d",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "shadow-xlarge"
+    ],
+    "description": "Large sheets."
+  },
+  {
+    "path": "shadow.secondary",
+    "type": "shadow",
+    "cssVar": "--shadow-secondary",
+    "cssClass": null,
+    "themed": false,
+    "light": "0px 4px 28px 0px #00000040, 0px 6px 44px 0px #00000026, 0px 4px 8px 0px #00000008",
+    "dark": "0px 4px 28px 0px #00000040, 0px 6px 44px 0px #00000026, 0px 4px 8px 0px #00000008",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "shadow-secondary"
+    ],
+    "description": "Modals over content."
+  },
+  {
+    "path": "shadow.field-inset",
+    "type": "shadow",
+    "cssVar": "--shadow-field-inset",
+    "cssClass": null,
+    "themed": true,
+    "light": "inset 0px 1px 1.5px 0px #ffffffb3, inset 0px -1px 1.5px 0px #00000008",
+    "dark": "inset 0px 1px 1.5px 0px #ffffff0d, inset 0px -1px 1.5px 0px #00000033",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "shadow-field-inset"
+    ],
+    "description": "Soft bevel inside the search field and inputs. The dark value is this system's: the source highlight is tuned for light only."
+  },
+  {
+    "path": "duration.fast",
+    "type": "duration",
+    "cssVar": "--duration-fast",
+    "cssClass": null,
+    "themed": false,
+    "light": "200ms",
+    "dark": "200ms",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "duration-fast"
+    ],
+    "description": "Colour and border transitions on buttons, tabs, chips."
+  },
+  {
+    "path": "duration.slow",
+    "type": "duration",
+    "cssVar": "--duration-slow",
+    "cssClass": null,
+    "themed": false,
+    "light": "300ms",
+    "dark": "300ms",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "duration-slow"
+    ],
+    "description": "Card image hover zoom; search bar shadow."
+  },
+  {
+    "path": "ease.out-quint",
+    "type": "cubicBezier",
+    "cssVar": "--ease-out-quint",
+    "cssClass": null,
+    "themed": false,
+    "light": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "dark": "cubic-bezier(0.22, 1, 0.36, 1)",
+    "aliasOf": null,
+    "aliasOfDark": null,
+    "tailwind": [
+      "ease-out-quint"
+    ],
+    "description": "Tab indicator slide, search focus."
+  }
+]

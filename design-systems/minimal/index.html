@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cosmos Study</title>
+<link rel="stylesheet" href="dist/tokens.css"><link rel="stylesheet" href="components/bundle.css">
+<style>
+body{margin:0;background:var(--bg-primary);color:var(--text-primary);font-family:var(--font-sans)}
+main{max-width:1024px;margin:0 auto;padding:0 var(--space-8) 96px}
+.top{display:flex;justify-content:flex-end;padding:var(--space-6) var(--space-8)}
+.muted{color:var(--text-secondary);margin:4px 0 16px} section{padding:40px 0;border-top:.5px solid var(--border-primary)}
+h2{margin:0} .pad{padding:24px} .stage{border:.5px solid var(--border-primary);border-radius:var(--radius-3xl);overflow:hidden}
+
+
+.sws{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px} .sw{display:flex;align-items:center;gap:8px;font:400 12px/1.2 var(--font-mono)} .sw span{width:28px;height:28px;border-radius:var(--radius-full);border:.5px solid var(--border-primary);flex:none} code{font:400 12px var(--font-mono)} .sw b{font-weight:400}
+</style></head>
+<body class="cx">
+<div class="top"><button class="cx-btn cx-btn--outline cx-btn--sm" id="t">Toggle theme</button></div>
+<main>
+<section><h2 class="heading">Semantic colours</h2><p class="body-regular muted">Every role with its light/dark value. Primitives are in tokens.json.</p><div class="sws"><div class="sw"><span style="background:var(--bg-primary)"></span><b>bg-primary</b></div><div class="sw"><span style="background:var(--bg-paper)"></span><b>bg-paper</b></div><div class="sw"><span style="background:var(--bg-card)"></span><b>bg-card</b></div><div class="sw"><span style="background:var(--bg-cell)"></span><b>bg-cell</b></div><div class="sw"><span style="background:var(--bg-elevation)"></span><b>bg-elevation</b></div><div class="sw"><span style="background:var(--bg-light-elevation)"></span><b>bg-light-elevation</b></div><div class="sw"><span style="background:var(--bg-floating)"></span><b>bg-floating</b></div><div class="sw"><span style="background:var(--bg-inverted)"></span><b>bg-inverted</b></div><div class="sw"><span style="background:var(--bg-neutral)"></span><b>bg-neutral</b></div><div class="sw"><span style="background:var(--bg-toast)"></span><b>bg-toast</b></div><div class="sw"><span style="background:var(--bg-badge)"></span><b>bg-badge</b></div><div class="sw"><span style="background:var(--bg-critical)"></span><b>bg-critical</b></div><div class="sw"><span style="background:var(--bg-warning)"></span><b>bg-warning</b></div><div class="sw"><span style="background:var(--bg-scrim)"></span><b>bg-scrim</b></div><div class="sw"><span style="background:var(--text-primary)"></span><b>text-primary</b></div><div class="sw"><span style="background:var(--text-secondary)"></span><b>text-secondary</b></div><div class="sw"><span style="background:var(--text-tertiary)"></span><b>text-tertiary</b></div><div class="sw"><span style="background:var(--text-quaternary)"></span><b>text-quaternary</b></div><div class="sw"><span style="background:var(--text-disabled)"></span><b>text-disabled</b></div><div class="sw"><span style="background:var(--text-inverted)"></span><b>text-inverted</b></div><div class="sw"><span style="background:var(--text-link)"></span><b>text-link</b></div><div class="sw"><span style="background:var(--text-critical)"></span><b>text-critical</b></div><div class="sw"><span style="background:var(--text-warning)"></span><b>text-warning</b></div><div class="sw"><span style="background:var(--text-success)"></span><b>text-success</b></div><div class="sw"><span style="background:var(--text-onmedia)"></span><b>text-onmedia</b></div><div class="sw"><span style="background:var(--border-primary)"></span><b>border-primary</b></div><div class="sw"><span style="background:var(--border-hover)"></span><b>border-hover</b></div><div class="sw"><span style="background:var(--border-active)"></span><b>border-active</b></div><div class="sw"><span style="background:var(--border-critical)"></span><b>border-critical</b></div><div class="sw"><span style="background:var(--border-warning)"></span><b>border-warning</b></div><div class="sw"><span style="background:var(--button-primary)"></span><b>button-primary</b></div><div class="sw"><span style="background:var(--button-secondary)"></span><b>button-secondary</b></div><div class="sw"><span style="background:var(--button-floating)"></span><b>button-floating</b></div><div class="sw"><span style="background:var(--hover-primary)"></span><b>hover-primary</b></div><div class="sw"><span style="background:var(--hover-secondary)"></span><b>hover-secondary</b></div><div class="sw"><span style="background:var(--hover-tertiary)"></span><b>hover-tertiary</b></div></div></section>
+<section><h2 class="heading">Button</h2><p class="body-regular muted">Pill-shaped text button for every action, from Sign up to Follow; always <code>radius-full</code>, label in <code>body-medium</code> (15px/22px, 500).</p><div class="stage">
+<div class="cx pad">
+<div class="cx-stack">
+  <div class="cx-row">
+    <button class="cx-btn cx-btn--primary">Sign up</button>
+    <button class="cx-btn cx-btn--secondary">Save to collection</button>
+    <button class="cx-btn cx-btn--outline"><svg class="cx-icon cx-icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>New collection</button>
+    <button class="cx-btn cx-btn--ghost">Log in</button>
+  </div>
+  <div class="cx-row">
+    <button class="cx-btn cx-btn--primary cx-btn--sm">Follow</button>
+    <button class="cx-btn cx-btn--secondary cx-btn--sm">Following</button>
+    <button class="cx-btn cx-btn--primary" disabled>Follow</button>
+  </div>
+</div>
+</div>
+</div><p class="caption muted">Guidelines: components/Button/README.md</p></section><section><h2 class="heading">IconButton</h2><p class="body-regular muted">Circular button carrying a single 20px line icon: share, more, add, visual search.</p><div class="stage">
+<div class="cx pad">
+<div class="cx-row">
+  <button class="cx-icon-btn" aria-label="Share"><svg class="cx-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M5 12v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7"/></svg></button>
+  <button class="cx-icon-btn cx-icon-btn--sm" aria-label="More"><svg class="cx-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="18" cy="12" r="1" fill="currentColor"/></svg></button>
+  <button class="cx-icon-btn cx-icon-btn--primary" aria-label="Add"><svg class="cx-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+  <button class="cx-icon-btn cx-icon-btn--plain" aria-label="Visual search"><svg class="cx-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></button>
+  <button class="cx-icon-btn" aria-label="Share" disabled><svg class="cx-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M8 7l4-4 4 4"/><path d="M5 12v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7"/></svg></button>
+</div>
+</div>
+</div><p class="caption muted">Guidelines: components/IconButton/README.md</p></section><section><h2 class="heading">SearchBar</h2><p class="body-regular muted">The centred pill search field in the header: 56px tall (<code>layout-header-height</code>), up to 456px wide, with an optional scope chip and trailing visual-search action.</p><div class="stage">
+<div class="cx pad">
+<div class="cx-search">
+  <div class="cx-search__field">
+    <span class="cx-chip"><span class="cx-avatar cx-avatar--xs cx-avatar--initials" style="font-size:10px">LW</span><span class="cx-chip__label">lucasworcel</span></span>
+    <input class="cx-search__input" type="search" placeholder="Search profile…" aria-label="Search">
+    <span class="cx-search__actions">
+      <button class="cx-icon-btn cx-icon-btn--plain" aria-label="Search by image"><svg class="cx-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></button>
+    </span>
+  </div>
+</div>
+<div style="height:16px"></div>
+<div class="cx-search">
+  <div class="cx-search__field">
+    <span class="cx-search__lead"><svg class="cx-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg></span>
+    <input class="cx-search__input" type="search" placeholder="Search Cosmos…" aria-label="Search">
+    <span class="cx-search__actions"><button class="cx-icon-btn cx-icon-btn--plain" aria-label="Search by image"><svg class="cx-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/></svg></button></span>
+  </div>
+</div>
+</div>
+</div><p class="caption muted">Guidelines: components/SearchBar/README.md</p></section><section><h2 class="heading">Input</h2><p class="body-regular muted">Single-line text field with label and hint, styled to match the search field: pill, <code>bg-light-elevation</code>, 0.5px hairline.</p><div class="stage">
+<div class="cx pad">
+<div class="cx-stack">
+  <label class="cx-field"><span class="cx-field__label">Collection name</span><input class="cx-input" placeholder="e.g. Mœbles"><span class="cx-field__hint">Visible on your profile.</span></label>
+  <label class="cx-field"><span class="cx-field__label">Email</span><input class="cx-input" value="hello@studio" aria-invalid="true"><span class="cx-field__hint cx-field__hint--error">Enter a full email address.</span></label>
+  <label class="cx-field"><span class="cx-field__label">Username</span><input class="cx-input" value="lucasworcel" disabled></label>
+</div>
+</div>
+</div><p class="caption muted">Guidelines: components/Input/README.md</p></section><section><h2 class="heading">Chip</h2><p class="body-regular muted">40px pill that scopes or filters: the profile scope inside the search bar, filter tags, removable selections.</p><div class="stage">
+<div class="cx pad">
+<div class="cx-row">
+  <span class="cx-chip"><span class="cx-avatar cx-avatar--xs cx-avatar--initials" style="font-size:10px">LW</span><span class="cx-chip__label">lucasworcel</span></span>
+  <button class="cx-chip"><span class="cx-chip__label" style="padding-left:4px">Architecture</span><span class="cx-chip__remove"><svg class="cx-icon cx-icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></span></button>
+  <button class="cx-chip cx-chip--selected"><span class="cx-chip__label" style="padding-left:4px">Typography</span></button>
+</div>
+</div>
+</div><p class="caption muted">Guidelines: components/Chip/README.md</p></section><section><h2 class="heading">ImageCaption</h2><p class="body-regular muted">Caption over photography: a plain title with a frosted-glass credit pill beneath it.</p><div class="stage">
+<div class="cx pad">
+<div style="height:152px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:24px;border-radius:var(--radius-2xl);background:linear-gradient(135deg,var(--gray-600),var(--gray-300) 45%,var(--gray-700))">
+  <figcaption class="cx-imgcap"><span>Photograph from Unformen der Kunst</span><span class="cx-imgcap__credit">Karl Blossfeldt</span></figcaption>
+</div>
+</div>
+</div><p class="caption muted">Guidelines: components/ImageCaption/README.md</p></section><section><h2 class="heading">Tabs</h2><p class="body-regular muted">Segmented pill control that switches between views of the same page (Profile / Collections).</p><div class="stage">
+<div class="cx pad">
+<div class="cx-row" style="gap:24px">
+  <div class="cx-tabs" role="tablist"><div class="cx-tabs__list">
+    <button class="cx-tab" role="tab" aria-selected="false">Profile <span class="cx-count">4.6K</span></button>
+    <button class="cx-tab" role="tab" aria-selected="true">Collections <span class="cx-count">26</span></button>
+  </div></div>
+  <div class="cx-tabs" role="tablist"><div class="cx-tabs__list">
+    <button class="cx-tab cx-tab--plain" role="tab" aria-selected="true">Elements</button>
+    <button class="cx-tab cx-tab--plain" role="tab" aria-selected="false">Collections</button>
+    <button class="cx-tab cx-tab--plain" role="tab" aria-selected="false">People</button>
+  </div></div>
+</div>
+</div>
+</div><p class="caption muted">Guidelines: components/Tabs/README.md</p></section><section><h2 class="heading">CountBadge</h2><p class="body-regular muted">Small pill holding a compact number (26, 4.6K) beside a tab or label.</p><div class="stage">
+<div class="cx pad">
+<div class="cx-row">
+  <span class="cx-count">26</span><span class="cx-count">4.6K</span><span class="cx-count">1</span>
+  <span class="cx-count cx-count--badge">3</span>
+  <span class="cx-count cx-count--dot" aria-label="Unread"></span>
+</div>
+</div>
+</div><p class="caption muted">Guidelines: components/CountBadge/README.md</p></section><section><h2 class="heading">Avatar</h2><p class="body-regular muted">Circular profile image with a 0.5px <code>border-primary</code> outline so light photos keep an edge.</p><div class="stage">
+<div class="cx pad">
+<div class="cx-row" style="gap:16px">
+  <span class="cx-avatar cx-avatar--lg cx-avatar--initials">LW</span>
+  <span class="cx-avatar cx-avatar--initials">MA</span>
+  <span class="cx-avatar cx-avatar--sm cx-avatar--initials">JN</span>
+  <span class="cx-avatar cx-avatar--xs cx-avatar--initials" style="font-size:10px">A</span>
+  <span class="cx-avatar-stack"><span class="cx-avatar cx-avatar--sm cx-avatar--initials">A</span><span class="cx-avatar cx-avatar--sm cx-avatar--initials">B</span><span class="cx-avatar cx-avatar--sm cx-avatar--initials">C</span></span>
+</div>
+</div>
+</div><p class="caption muted">Guidelines: components/Avatar/README.md</p></section><section><h2 class="heading">CollectionCard</h2><p class="body-regular muted">A square, 24px-rounded tile for a collection or board, with its title and element count underneath. Cards sit in a grid.</p><div class="stage">
+<div class="cx pad">
+<div class="cx-grid" style="grid-template-columns:repeat(3,1fr);max-width:640px">
+  <a class="cx-card" href="#"><div class="cx-card__frame"><div class="cx-card__mosaic"><span style="background:var(--paper)"></span><span style="background:var(--gray-200)"></span><span style="background:var(--gray-100)"></span><span style="background:var(--gray-300)"></span></div></div><div class="cx-card__body"><p class="cx-card__title">Mœbles</p><p class="cx-card__meta">99 elements</p></div></a>
+  <a class="cx-card" href="#"><div class="cx-card__frame"><div class="cx-card__mosaic"><span style="background:var(--gray-300)"></span><span style="background:var(--gray-100)"></span><span style="background:var(--paper)"></span><span style="background:var(--gray-200)"></span></div></div><div class="cx-card__body"><p class="cx-card__title">Sevilla</p><p class="cx-card__meta">90 elements</p></div></a>
+  <a class="cx-card" href="#"><div class="cx-card__frame"><div class="cx-card__mosaic"><span style="background:var(--gray-200)"></span><span style="background:var(--paper)"></span><span style="background:var(--gray-300)"></span><span style="background:var(--gray-100)"></span></div></div><div class="cx-card__body"><p class="cx-card__title">Color</p><p class="cx-card__meta"><svg class="cx-icon cx-icon--sm" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>600 elements</p></div></a>
+</div>
+</div>
+</div><p class="caption muted">Guidelines: components/CollectionCard/README.md</p></section><section><h2 class="heading">ElementCard</h2><p class="body-regular muted">A single saved image in a masonry grid: natural aspect ratio, <code>radius-2xl</code>, hairline border, no shadow.</p><div class="stage">
+<div class="cx pad">
+<div style="columns:3 150px;column-gap:16px;max-width:520px">
+  <a class="cx-card cx-card--element" href="#" style="break-inside:avoid;margin-bottom:16px;gap:8px"><div class="cx-card__frame" style="height:200px;background:var(--gray-200)"></div><p class="cx-card__meta">lucasworcel</p></a>
+  <a class="cx-card cx-card--element" href="#" style="break-inside:avoid;margin-bottom:16px;gap:8px"><div class="cx-card__frame" style="height:130px;background:var(--paper)"></div><p class="cx-card__meta">Sevilla</p></a>
+  <a class="cx-card cx-card--element" href="#" style="break-inside:avoid;margin-bottom:16px;gap:8px"><div class="cx-card__frame" style="height:240px;background:var(--gray-300)"></div><p class="cx-card__meta">Color</p></a>
+</div>
+</div>
+</div><p class="caption muted">Guidelines: components/ElementCard/README.md</p></section><section><h2 class="heading">Header</h2><p class="body-regular muted">The sticky top bar: logo and Menu on the left, <code>SearchBar</code> centred, account actions on the right.</p><div class="stage">
+<div class="cx pad">
+</div><div class="cx"><header class="cx-header">
+  <div class="cx-header__start">
+    <span class="cx-mark" aria-label="Your logo"><svg viewBox="0 0 24 24" width="24" height="24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="3 3"/></svg></span>
+    <button class="cx-nav-trigger">Menu <svg class="cx-icon cx-icon--sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+  </div>
+  <div class="cx-search" style="max-width:360px"><div class="cx-search__field"><span class="cx-search__lead"><svg class="cx-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg></span><input class="cx-search__input" placeholder="Search…" aria-label="Search"></div></div>
+  <div class="cx-header__end"><a class="cx-btn cx-btn--ghost" href="#">Log in</a><a class="cx-btn cx-btn--primary" href="#">Sign up</a></div>
+</header>
+</div>
+</div><p class="caption muted">Guidelines: components/Header/README.md</p></section>
+</main>
+<script>document.getElementById('t').onclick=()=>{const r=document.documentElement;const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark'}</script>
+</body></html>
