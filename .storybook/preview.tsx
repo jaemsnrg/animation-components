@@ -1,6 +1,8 @@
 import type { Preview } from '@storybook/react-vite';
-import '../dist/tokens.css';
-import '../src/styles/globals.css';
+// Storybook previews one design system at a time: the two imports below pick which. (Stories for other
+// systems are discovered automatically; point these at that system to preview it.)
+import '../design-systems/minimal/dist/tokens.css';
+import '../design-systems/minimal/src/styles/globals.css';
 
 const preview: Preview = {
   parameters: {

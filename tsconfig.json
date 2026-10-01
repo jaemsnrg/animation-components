@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     "noEmit": true,
     "baseUrl": ".",
-    "paths": { "@/*": ["./src/*"] }
+    "paths": { "@/*": ["./design-systems/minimal/src/*"] }
   },
-  "include": ["src", "stories", ".storybook"]
+  "include": ["design-systems/*/src", "design-systems/*/stories", ".storybook"]
 }
