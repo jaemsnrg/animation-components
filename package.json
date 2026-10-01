@@ -1,0 +1,7 @@
+{
+  "name": "animation-components",
+  "private": true,
+  "type": "module",
+  "sideEffects": ["**/*.css"],
+  "description": "Animation components (flat, one file per component) and design systems (design-systems/<name>/). Import by file path; there are no barrel files, so unused components and systems are never bundled."
+}
