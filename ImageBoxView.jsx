@@ -11,6 +11,16 @@ const EASE = [0.448, 0.067, 0.119, 0.994];
 // Extra image height factor to allow parallax movement without blank edges
 const PARALLAX_OVERFLOW = 1.3;
 
+// Clip-path insets keyed by the edge the reveal sweeps FROM — same scheme as
+// ImageDirectionalReveal. 'up' sweeps from the bottom edge upward, etc.
+const CLIP_HIDDEN = {
+  up: 'inset(100% 0% 0% 0%)',
+  down: 'inset(0% 0% 100% 0%)',
+  left: 'inset(0% 100% 0% 0%)',
+  right: 'inset(0% 0% 0% 100%)',
+};
+const CLIP_VISIBLE = 'inset(0% 0% 0% 0%)';
+
 export const ImageBoxView = ({
   src,
   alt,
@@ -26,6 +36,10 @@ export const ImageBoxView = ({
   // When true: uses clipPath reveal so image shows at natural size — no cropping
   naturalSize = false,
   disableReveal = false,
+  // When set on the fixed-height (box) mode: reveals via a directional clipPath
+  // sweep instead of the height-grow + scale-zoom effect. The box height never
+  // changes. One of 'up' | 'down' | 'left' | 'right'.
+  revealDirection,
 }) => {
   const resolvedInitialHeight = initialHeight ?? height * 0.5;
   const containerRef = useRef(null);
@@ -120,6 +134,42 @@ export const ImageBoxView = ({
     );
   }
 
+  // ── Fixed-height mode, directional clip reveal ────────────────────────────
+  // Box height is constant throughout — only a clipPath sweep reveals the image.
+  // Gated on both scroll visibility AND the image being loaded, so the clip
+  // never opens onto a still-loading image (which would otherwise race an
+  // independent opacity fade — there isn't one here, the clip is the only reveal).
+  if (revealDirection) {
+    const ready = inView && isLoaded;
+    return (
+      <div ref={containerRef} style={{ width }}>
+        <div ref={boxRef} style={{ width, height, overflow: 'hidden', borderRadius, display: 'grid' }}>
+          <motion.div
+            initial={{ clipPath: CLIP_HIDDEN[revealDirection] }}
+            animate={{ clipPath: ready ? CLIP_VISIBLE : CLIP_HIDDEN[revealDirection] }}
+            transition={{ duration, ease: EASE, delay }}
+            style={{ gridArea: '1/1', width: '100%', height: '100%', overflow: 'hidden' }}
+          >
+            <motion.img
+              ref={imgRef}
+              src={src}
+              alt={alt}
+              onLoad={() => setIsLoaded(true)}
+              style={{
+                width: '100%',
+                height: height * PARALLAX_OVERFLOW,
+                objectFit: 'cover',
+                display: 'block',
+                y: imageY,
+                marginTop: -(height * (PARALLAX_OVERFLOW - 1)) / 2,
+              }}
+            />
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
+
   // ── Fixed-height mode (original behaviour) ────────────────────────────────
   return (
     <div ref={containerRef} style={{ width }}>
@@ -190,4 +240,6 @@ ImageBoxView.propTypes = {
   duration: PropTypes.number,
   delay: PropTypes.number,
   naturalSize: PropTypes.bool,
+  disableReveal: PropTypes.bool,
+  revealDirection: PropTypes.oneOf(['up', 'down', 'left', 'right']),
 };
