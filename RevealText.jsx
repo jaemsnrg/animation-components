@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cn } from '../lib/utils';
+import { cn } from './lib/utils';
 import { useRevealTrigger, toCssEasing, FADE_DURATION_SCALE, FADE_EASING } from './useRevealTrigger';
 import './reveal-fade.css';
 

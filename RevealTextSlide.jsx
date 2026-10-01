@@ -2,7 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { cn } from '../lib/utils';
+import { cn } from './lib/utils';
 import { useRevealTrigger, toCssEasing } from './useRevealTrigger';
 import './reveal-slide.css';
 

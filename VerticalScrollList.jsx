@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { cn } from '../lib/utils';
+import { cn } from './lib/utils';
 
 /**
  * VerticalScrollList
